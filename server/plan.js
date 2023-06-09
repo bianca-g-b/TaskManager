@@ -27,5 +27,19 @@ ADD FOLDERS TO CREATE A CLEAR STRUCTURE OF THE PROJECT:
 
 SET UP server.js
 
+ - add file tasksController.js to controllers folder
+ - add file tasksModel.js to models folder
+ - add file tasksRoute.js to routes folder
 
+SET UP db.js
+- write code to connect to db
+
+SET UP tasksModel.js
+- write functions
+
+SET UP tasksController.js
+- write functions
+
+SET UP tasksRoute.js
+- write routes
 */
