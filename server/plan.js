@@ -23,7 +23,9 @@ ADD FOLDERS TO CREATE A CLEAR STRUCTURE OF THE PROJECT:
 - add folder "routes" - to store all routes
 - add folder "controllers" - to store all controllers
 - add folder "models" - to store all models
-- add folder "config" - to store all config files
 - add folder "db" - to store db file, that will be used to connect to db
+
+SET UP server.js
+
 
 */
