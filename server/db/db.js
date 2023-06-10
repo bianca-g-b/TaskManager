@@ -2,7 +2,8 @@
 import pg from "pg";
 
 // Get connection string to database
-const connectionString = env.processs.REACT_APP_CONNECTION_STRING
+// const connectionString = process.env.REACT_APP_CONNECTION_STRING;
+
 
 // Throw error if connection string not found
 if (!connectionString) {

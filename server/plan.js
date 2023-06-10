@@ -42,4 +42,7 @@ SET UP tasksController.js
 
 SET UP tasksRoute.js
 - write routes
+
+(MODELS >> CONTROLLERS >> ROUTES)
+
 */
