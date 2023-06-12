@@ -10,6 +10,26 @@
 import * as tasksModel from "../models/tasksModel.js";
 
 /* GET */
+
+// Write function to get task by title
+export async function getTaskByTitle(req, res,next) {
+    if (req.query.title !== undefined) {
+        console.log(req.query.search)
+        const task = await tasksModel.getTaskByTitle(req.query.title);
+        return res.json({result: task})
+    }
+    next();
+}
+
+// Write a function to search task content by word
+export async function searchTaskByWord(req, res, next) {
+    if (req.query.content !== undefined) {
+        const task = await tasksModel.searchTaskByWord(req.query.content);
+        return res.json({result: task})
+    }
+    next();
+}
+
 // Write function that will get all tasks from db
 export async function getAllTasks(req, res) {
     const tasks = await tasksModel.getAllTasks();
@@ -20,24 +40,6 @@ export async function getAllTasks(req, res) {
 export async function getTaskByID(req, res) {
     const task = await tasksModel.getTaskByID(req.params.id);
     return res.json({result: task})
-}
-
-// Write function to get task by title
-export async function getTaskByTitle(req, res) {
-    // if (req.query.search !== undefined) {
-        const task = await tasksModel.getTaskByTitle(req.query.search);
-        return res.json({result: task})
-    // }
-    // next();
-}
-
-// Write a function to search task content by word
-export async function searchTaskByWord(req, res, next) {
-    if (req.query.search !== undefined) {
-        const task = await tasksModel.searchTaskByWord(req.query.search);
-        return res.json({result: task})
-    }
-    next();
 }
 
 /* POST */
@@ -59,4 +61,11 @@ export async function updateTask(req, res) {
 export async function deleteTask(req, res) {
     const deletedTask = await tasksModel.deleteTask(req.param.id);
     return res.json({result: deletedTask})
+}
+
+/* PATCH */
+//Write a function that will mark a task as completed by date
+export async function markTaskAsCompletedByDate(req, res) {
+    const completedTask = await tasksModel.markTaskAsCompletedbyDate();
+    return res.json({result: completedTask})
 }
