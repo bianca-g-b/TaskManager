@@ -41,31 +41,31 @@ export async function getTaskByID(id) {
     return {task: task.rows[0]};
 }
 
-/* POST */
+/* POST */ //tested
 // Write function to create a new task
 export async function createTask(details) {
     const value = [details.title, details.content, details.deadline, true];
     const query = `INSERT INTO tasks (title, content, deadline, active) VALUES($1, $2, $3, $4) RETURNING *;`;
     const newTask = await pool.query(query, value)
-    return [task.rows]
+    return {task: newTask.rows[0]}
 }
 
-/* PATCH */
+/* PATCH */ //tested
 // Write function to update values of a task
 export async function updateTask(id, details) {
     const value = [details.title, details.content, details.deadline, id];
     const query = `UPDATE tasks SET title = $1, content = $2, deadline = $3 WHERE id = $4 RETURNING *;`;
     const updatedTask = await pool.query(query, value);
-    return [updatedTask.rows];
+    return {task: updatedTask.rows[0]};
 }
 
-/* DELETE */
+/* DELETE */ //tested
 // Write function to delete a task
 export async function deleteTask(id) {
     const value = [id];
     const query = `DELETE FROM tasks where id = $1 RETURNING *;`;
     const deletedTask = await pool.query(query, value);
-    return [deletedTask.rows];
+    return {task: deletedTask.rows[0]};
 }
 
 // to do: change active to false when deadline is passed
@@ -79,5 +79,5 @@ export async function deleteTask(id) {
 export async function markTaskAsCompletedbyDate() {
     const query = `UPDATE tasks SET active = false WHERE deadline < CURRENT_DATE RETURNING *;`;
     const completedTask = await pool.query(query);
-    return [completedTask.rows];
+    return {tasks: completedTask.rows};
 }

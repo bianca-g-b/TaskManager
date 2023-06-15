@@ -52,14 +52,14 @@ export async function createTask(req, res) {
 /* PATCH */
 // Write a function that will update the values of a task by id
 export async function updateTask(req, res) {
-    const updatedTask = await tasksModel.updateTask(req.param.id, req.body);
+    const updatedTask = await tasksModel.updateTask(req.params.id, req.body);
     return res.json({result: updatedTask})
 }
 
 /* DELETE */
 // Write a function that will delete a task by id
 export async function deleteTask(req, res) {
-    const deletedTask = await tasksModel.deleteTask(req.param.id);
+    const deletedTask = await tasksModel.deleteTask(req.params.id);
     return res.json({result: deletedTask})
 }
 
