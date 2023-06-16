@@ -33,13 +33,13 @@ export async function searchTaskByWord(req, res, next) {
 // Write function that will get all tasks from db
 export async function getAllTasks(req, res) {
     const tasks = await tasksModel.getAllTasks();
-    return res.json({result: tasks})
+    return res.json(tasks)
 }
 
 // Write function that will get a task by ID
 export async function getTaskByID(req, res) {
     const task = await tasksModel.getTaskByID(req.params.id);
-    return res.json({result: task})
+    return res.json(task)
 }
 
 /* POST */

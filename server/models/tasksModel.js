@@ -29,7 +29,7 @@ export async function searchTaskByWord(word) {
 export async function getAllTasks() {
     const query = `SELECT * FROM tasks`;
     const tasks = await pool.query(query);
-    return [tasks.rows];
+    return tasks.rows;
 }
 
 /*  GET */ //tested
@@ -38,7 +38,7 @@ export async function getTaskByID(id) {
     const value = [id];
     const query = `SELECT * FROM tasks WHERE id = $1;`;
     const task = await pool.query(query, value);
-    return {task: task.rows[0]};
+    return task.rows[0];
 }
 
 /* POST */ //tested
