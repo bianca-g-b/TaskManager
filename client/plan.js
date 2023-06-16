@@ -14,5 +14,5 @@ Structure src folder
 create the App component
  - to start with, create very basic functionality, and start building from there
 
-Make HHTP request from frontend to backend, to test if they are connecting
+Make fetch request from frontend to backend, to test if they are connecting
 */

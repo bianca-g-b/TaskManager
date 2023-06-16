@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
   });
   
 
-app.use("/tasks", router)
+app.use("/api/tasks", router)
 
 // Listen to port
 app.listen(port, () => {

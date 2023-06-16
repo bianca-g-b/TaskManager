@@ -6,7 +6,7 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    fetch("/tasks")
+    fetch("/api/tasks")
     .then(response => {
       if (!response.ok) {
         throw new Error("Request failed!")
