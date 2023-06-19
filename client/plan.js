@@ -15,4 +15,7 @@ create the App component
  - to start with, create very basic functionality, and start building from there
 
 Make fetch request from frontend to backend, to test if they are connecting
+
+Create new components, each with its specific functionality:
+- GetAllTasks.js - fetch request to backend to get all tasks
 */
