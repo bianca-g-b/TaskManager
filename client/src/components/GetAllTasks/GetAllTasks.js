@@ -1,35 +1,31 @@
 import {useState} from "react";
-import "./GetAllTasks.css"
+import "./GetAllTasks.css";
+import * as apiFunction from "../../api/api.js";
 
 function GetAllTasks() {
     const [tasks, setTasks] = useState([]);
     const [showTasks, setShowTasks] = useState(false);
     const [loading, setLoading] = useState(false);
-
-    async function fetchData() {
-        try {
-            const response = await fetch("api/tasks");
-            if (!response.ok) {
-                throw new Error ("Request failed!");
-            }
-            const data = await response.json();
-            setShowTasks(true);
-            setTasks(data);
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setLoading(false);
-        }
-    };
+  
+    async function showData() {
+        setTasks(await apiFunction.getTasks());
+        setShowTasks(true);
+    }
 
     function handleHideTasks() {
         setShowTasks(false);
     };
 
+    if (!showData && !console.error()) {
+        setLoading(false);
+    }
+
     return (
         <div className = "get-all-container">
-            <button className="get-all-buttons" onClick={fetchData}>Show Tasks</button>
+        <div className="buttons-container">
+            <button className="get-all-buttons" onClick={showData}>Show Tasks</button>
             <button className="get-all-buttons" onClick={handleHideTasks}>Hide Tasks</button>
+            </div>
             {loading ? (
                 <p>Loading...</p>
             ) :showTasks ? (
@@ -40,6 +36,8 @@ function GetAllTasks() {
                 <th>Title</th>
                 <th>Content</th>
                 <th>Deadline</th>
+                <th>Unique ID</th>
+                <th>Active</th>
             </tr>
             </thead>
             <tbody>
@@ -50,6 +48,8 @@ function GetAllTasks() {
                     <td className= "task-title">{task.title}</td>
                     <td className= "task-content">{task.content}</td>
                     <td className= "task-deadline">{task.deadline.split("T")[0].split("-").reverse().join("-")}</td>
+                    <td className="id">{task.id}</td>
+                    <td className="task-status">{task.active.toString()}</td>
                 </tr>
             ))}
             </tbody>

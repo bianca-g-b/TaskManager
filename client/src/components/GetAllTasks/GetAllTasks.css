@@ -20,7 +20,8 @@
 }
 th {
     color:rgb(21, 51, 41);
-    background-color: white;
+    background-color: rgb(203, 217, 102);
+    border: solid 1px rgb(21, 51, 41);
 } 
   
 td {
@@ -31,7 +32,19 @@ td {
     color: rgb(21, 51, 41);
 }
 
+tr:hover {
+    background-color: rgb(182, 239, 251);
+}
+
 .get-all-buttons {
-    background-color: rgb(187, 236, 220);
+    background-image: linear-gradient(to right, rgb(102, 194, 217), rgb(182, 239, 251));
     border: solid 1px rgb(21, 51, 41);
+    height: 100%;
+    width:max-content;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: row;
+    margin-top: 1%;
 }
