@@ -1,31 +1,10 @@
-import {useState} from "react";
 import "./GetAllTasks.css";
-import * as apiFunction from "../../api/api.js";
 
-function GetAllTasks() {
-    const [tasks, setTasks] = useState([]);
-    const [showTasks, setShowTasks] = useState(false);
-    const [loading, setLoading] = useState(false);
-  
-    async function showData() {
-        setTasks(await apiFunction.getTasks());
-        setShowTasks(true);
-    }
-
-    function handleHideTasks() {
-        setShowTasks(false);
-    };
-
-    if (!showData && !console.error()) {
-        setLoading(false);
-    }
+function GetAllTasks({tasks, showTasks, loading}) {
+    
 
     return (
         <div className = "get-all-container">
-        <div className="buttons-container">
-            <button className="get-all-buttons" onClick={showData}>Show Tasks</button>
-            <button className="get-all-buttons" onClick={handleHideTasks}>Hide Tasks</button>
-            </div>
             {loading ? (
                 <p>Loading...</p>
             ) :showTasks ? (

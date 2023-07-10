@@ -11,3 +11,19 @@ export async function getTasks() {
             console.log(error);
         }
     }
+
+export async function updateTasks() {
+    try {
+        const response = await fetch("api/tasks", {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        const data = await response.json();
+        return data;
+    } 
+    catch (error) {
+    console.error('Error:', error);
+    }
+    }

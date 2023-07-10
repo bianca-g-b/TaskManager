@@ -1,7 +1,3 @@
-.get-all-container {
-    margin-top: 20%;   
-}
-
 .get-all-table {
     display: flex;
     align-items:center;
@@ -20,8 +16,9 @@
 }
 th {
     color:rgb(21, 51, 41);
-    background-color: rgb(203, 217, 102);
+    background-color: rgb(221, 232, 139);
     border: solid 1px rgb(21, 51, 41);
+    background-color: rgb(182, 239, 251);
 } 
   
 td {
@@ -33,7 +30,8 @@ td {
 }
 
 tr:hover {
-    background-color: rgb(182, 239, 251);
+    /* background-color: rgb(182, 239, 251); */
+    background-image: linear-gradient(to right, rgb(168, 234, 250), rgb(182, 239, 251));
 }
 
 .get-all-buttons {
@@ -46,5 +44,5 @@ tr:hover {
 .buttons-container {
     display: flex;
     justify-content: row;
-    margin-top: 1%;
+    margin-top: 20%;
 }
