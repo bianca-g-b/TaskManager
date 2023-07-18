@@ -28,13 +28,7 @@ export async function updateTasks() {
     }
     }
 
-export async function createTask(event) {
-    const { title, content, deadline } = event.target.elements;
-    let details = {
-      title: title.value,
-      content: content.value,
-      deadline: deadline.value,
-    };
+export async function createTask(details) {
     try {
         const response = await fetch("api/tasks", {
             method: "POST",
@@ -44,9 +38,10 @@ export async function createTask(event) {
             body: JSON.stringify(details)
         });
         const data = await response.json();
-        return data;
+        return data.result;
     } 
     catch (error) {
     console.error('Error:', error);
+    throw new Error("Create task failed");
     }
     }

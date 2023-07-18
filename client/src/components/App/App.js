@@ -24,36 +24,30 @@ function App() {
   }, []);
 
   // Handle submit function for CreateTask component
-  async function handlesubmit() {
-    setStatus("Loading...");
-    let result = await apiFunction.createTask();
-    setStatus("Submit");
-    alert(result.status);
-
+  async function handlesubmit(event) {
+    event.preventDefault();
+    const { title, content, deadline } = event.target.elements;
+    const details = {
+    title: title.value,
+    content: content.value,
+    deadline: deadline.value,
+    };
+    try {
+      const response = await apiFunction.createTask(details);
+      setStatus("Submit");
+      if (response) {
+        console.log("Task created successfully!");
+      } else {
+        console.error("Create task failed:", response);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
 }
-  // Function to hide all tasks
-  // function handleHideTasks() {
-  //     setShowTasks(false);
-  // };
-
-// Set loading to false if data doesn't show and there is no error
-  // if (!showData && !console.error()) {
-  //     setLoading(false);
-  // }
-
-    // Function to update tasks and display them
-//   async function handleUpdate() {
-//     await apiFunction.updateTasks();
-//     setTasks(await apiFunction.getTasks());
-//     setShowTasks(true);
-// }
-
+ 
   return (
     <div className="testing-app">
     <div className="buttons-container">
-        {/* <button className="get-all-buttons" onClick={showData}>Show Tasks</button> */}
-        {/* <button className="get-all-buttons" onClick={handleHideTasks}>Hide Tasks</button>
-        <button className="get-all-buttons" onClick={handleUpdate}>Update Tasks</button> */}
     </div>
     <Routes>
     <Route path="/" element={<GetAllTasks 
@@ -63,7 +57,7 @@ function App() {
     />}
     ></Route>
     <Route path="/addtask" element={<CreateTask 
-    onSubmit={handlesubmit}
+    handlesubmit={handlesubmit}
     status={status}
      />}></Route>
     </Routes>
