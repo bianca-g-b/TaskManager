@@ -46,3 +46,11 @@ tr:hover {
     justify-content: row;
     margin-top: 20%;
 }
+
+.create-task-button {
+    background-color: #4261FF;
+}
+.create-task-link {
+    text-decoration: none;
+    color: white;
+}
