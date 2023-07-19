@@ -18,4 +18,17 @@ Make fetch request from frontend to backend, to test if they are connecting
 
 Create new components, each with its specific functionality:
 - GetAllTasks.js - fetch request to backend to get all tasks
+    - add edit and delete buttons/icons for each individual task
+
+- Create api folder, containing api.js file as an api layer
+    - will contain functions to fetch the data, that will be then passed to other components
+
+- Install react-router-don, to navigate through diferrent components
+
+- CreateTask.js - functionality to create a new task
+
+- EditTask.js - to modify a task
+
+- in App.js, getTaskByID fundtion, to help with edit task functionality
+
 */

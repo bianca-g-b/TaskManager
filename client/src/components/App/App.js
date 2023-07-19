@@ -1,7 +1,8 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import GetAllTasks from "../GetAllTasks/GetAllTasks";
 import CreateTask from "../CreateTask/CreateTask";
+import EditTask from "../EditTask/EditTask";
 import * as apiFunction from "../../api/api.js";
 import {Routes, Route } from "react-router-dom";
 
@@ -9,7 +10,15 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [showTasks, setShowTasks] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("Submit");
+  const [status, setStatus] = useState("Submit"); // for create task
+  const [editStatus, setEditStatus] = useState("Edit") // for edit task
+  const [checkedStatus, setCheckedStatus] = useState(false) //for checkboc in edit task
+  // const [id, setId] = useState(null); // for edit task ???
+  // const [details, setDetails] = useState({}); // for edit task
+  const [taskById, setTaskById] = useState({}); // for edit task
+
+  // const ref= useRef();
+
  
   // Function to get all tasks when page loads
   useEffect(() => {
@@ -44,6 +53,62 @@ function App() {
       console.error("Error:", error);
     }
 }
+
+// Function to save task details in state by id for edit task
+
+async function saveTaskByID(id) {
+  const task = await apiFunction.getTaskByID(id);
+  console.log(id);
+  // map through tasks and find task by id
+  for (let i = 0; i < tasks.length; i++) {
+    console.log(tasks[i].id);
+    console.log(id);
+    if (tasks[i].id === id) {
+      console.log("task by id:", tasks[i])
+      setTaskById(tasks[i]);
+      break;
+    }
+}
+  console.log(task);
+  // setTaskById(await task);
+  console.log("By id:",taskById);
+  // console.log("event:", event)
+  return taskById;
+}
+
+
+//Function to handle edit submit
+async function handleEditSubmit(event) {
+  event.preventDefault();
+  const { title, content, deadline } = event.target.elements;
+  const details = {
+    title: title.value,
+    content: content.value,
+    deadline: deadline.value,
+    active: checkedStatus,
+  };
+  const id = event.target.id;
+  // setId(event.target.id);
+  console.log(details);
+  try {
+    const response = await apiFunction.editTask(id, details);
+    
+    setEditStatus("Edit");
+    if (response) {
+      console.log("Task edited successfully!");
+    } else {
+      console.error("Edit task failed:", response);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+
+// checkUncheckBox for edit task checkbox
+async function checkUncheckBox(event) {
+  setCheckedStatus(event.target.checked)
+}
  
   return (
     <div className="testing-app">
@@ -54,12 +119,21 @@ function App() {
     tasks={tasks}
     showTasks={showTasks}
     loading={loading}
+    saveTaskByID={saveTaskByID}
     />}
     ></Route>
     <Route path="/addtask" element={<CreateTask 
     handlesubmit={handlesubmit}
     status={status}
      />}></Route>
+    <Route path="/edittask/:id" element={<EditTask
+    tasks={tasks}
+  
+    handleEditSubmit={handleEditSubmit}
+    editStatus={editStatus}
+    checkUncheckBox={checkUncheckBox}
+    // ref={ref}
+    />}></Route>
     </Routes>
     </div>
   )  

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 
-function GetAllTasks({tasks, showTasks, loading}) {
+function GetAllTasks({tasks, showTasks, loading,saveTaskByID}) {
     
 
     return (
@@ -33,19 +33,19 @@ function GetAllTasks({tasks, showTasks, loading}) {
             <tbody>
             {tasks.map((task) => (
                 
-                <tr key={task.id} className="tasks">
+                <tr key={task.id} className="tasks" id={task.id}>
                     
-                    <td className= "task-title">{task.title}</td>
+                    <td className= "task-title" value={task.title}>{task.title}</td>
                     <td className= "task-content">{task.content}</td>
                     <td className= "task-date">{task.date.split("T")[0].split("-").reverse().join("-")}</td>
                     <td className= "task-deadline">{task.deadline.split("T")[0].split("-").reverse().join("-")}</td>
                     <td className="id">{task.id}</td>
                     <td className="task-status">{task.active.toString()}</td>
                     <td className="task-actions">
-                        <NavLink to="/edittask" className="edit-task-link">
+                        <NavLink id="test" onClick={() => saveTaskByID(task.id)} to={`/edittask/${task.id}`} className="edit-task-link">
                         <FontAwesomeIcon icon={icon({name: 'pen-to-square'})} style={{color:"#5e81e8"}}/>
                         </NavLink>
-                        <NavLink to="/deletetask" className="delete-task-link">
+                        <NavLink to={`/deletetask/${task.id}`} className="delete-task-link">
                         <FontAwesomeIcon icon={icon({name: 'trash'})} style={{color:"#d41111"}} />
                         </NavLink>
                     </td>
