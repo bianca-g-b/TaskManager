@@ -1,8 +1,30 @@
 import {useState} from "react";
+// import * as apiFunction from "../../api/api.js";
 
-function EditTask({handleEditSubmit, taskByID, editStatus,checkUncheckBox}) {
-    const [editedTask, setEditedTask] = useState({title: taskByID.title , content: taskByID.content, deadline: taskByID.deadline, active: taskByID.active})
+function EditTask({handleEditSubmit, taskById, editStatus,checkUncheckBox}) {
+    const [editedTask, setEditedTask] = useState({title: taskById.title , content: taskById.content, deadline: taskById.deadline, active: taskById.active})
+    // const [taskById, setTaskById] = useState({})
     console.log(editedTask)
+
+    // Function to save task details in state by id for edit task
+
+// async function saveTaskByID(id) {
+//     const task = await apiFunction.getTaskByID(id);
+//     console.log(id);
+//     // map through tasks and find task by id
+//     for (let i = 0; i < tasks.length; i++) {
+//       console.log(tasks[i].id);
+//       console.log(id);
+//       if (tasks[i].id === id) {
+//         console.log("task by id:", tasks[i])
+//         setEditedTask(tasks[i]);
+//         console.log(editedTask);
+//         break;
+//       }
+//   }
+//     console.log(task);
+  
+//   }
 
     return(
         <form onSubmit={handleEditSubmit} className="edit-task-form-area">
@@ -18,7 +40,7 @@ function EditTask({handleEditSubmit, taskByID, editStatus,checkUncheckBox}) {
                 <div className="form-component">
                     <label htmlFor="content">Content</label>
                     <input value={editedTask.content}
-                        onChange={(event) => setEditedTask({...editedTask, content: event.target.value })}
+                        onChange={(event) => setEditedTask({...editedTask, content: event.target.value })} placeholder={editedTask.content}
                         type="text" id="content"
                     />
                 </div>

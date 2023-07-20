@@ -42,7 +42,7 @@ function GetAllTasks({tasks, showTasks, loading,saveTaskByID}) {
                     <td className="id">{task.id}</td>
                     <td className="task-status">{task.active.toString()}</td>
                     <td className="task-actions">
-                        <NavLink id="test" onClick={() => saveTaskByID(task.id)} to={`/edittask/${task.id}`} className="edit-task-link">
+                        <NavLink id={task.id} onClick={() => saveTaskByID(task.id)} to={`/edittask/${task.id}`} className="edit-task-link">
                         <FontAwesomeIcon icon={icon({name: 'pen-to-square'})} style={{color:"#5e81e8"}}/>
                         </NavLink>
                         <NavLink to={`/deletetask/${task.id}`} className="delete-task-link">

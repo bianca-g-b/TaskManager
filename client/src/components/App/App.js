@@ -13,7 +13,7 @@ function App() {
   const [status, setStatus] = useState("Submit"); // for create task
   const [editStatus, setEditStatus] = useState("Edit") // for edit task
   const [checkedStatus, setCheckedStatus] = useState(false) //for checkboc in edit task
-  // const [id, setId] = useState(null); // for edit task ???
+  const [id2, setId] = useState(null); // for edit task ???
   // const [details, setDetails] = useState({}); // for edit task
   const [taskById, setTaskById] = useState({}); // for edit task
 
@@ -59,6 +59,7 @@ function App() {
 async function saveTaskByID(id) {
   const task = await apiFunction.getTaskByID(id);
   console.log(id);
+  
   // map through tasks and find task by id
   for (let i = 0; i < tasks.length; i++) {
     console.log(tasks[i].id);
@@ -66,15 +67,20 @@ async function saveTaskByID(id) {
     if (tasks[i].id === id) {
       console.log("task by id:", tasks[i])
       setTaskById(tasks[i]);
+      setId(tasks[i].id)
+      // return tasks[i]
       break;
     }
 }
   console.log(task);
-  // setTaskById(await task);
-  console.log("By id:",taskById);
-  // console.log("event:", event)
-  return taskById;
+  console.log(taskById)
+  console.log(id2)
 }
+
+// setTaskById(saveTaskByID)
+
+
+ 
 
 
 //Function to handle edit submit
@@ -128,7 +134,7 @@ async function checkUncheckBox(event) {
      />}></Route>
     <Route path="/edittask/:id" element={<EditTask
     tasks={tasks}
-  
+    taskById={taskById}
     handleEditSubmit={handleEditSubmit}
     editStatus={editStatus}
     checkUncheckBox={checkUncheckBox}
