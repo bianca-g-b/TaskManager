@@ -53,8 +53,8 @@ export async function createTask(details) {
 /* PATCH */ //tested
 // Write function to update values of a task
 export async function updateTask(id, details) {
-    const value = [details.title, details.content, details.deadline, id];
-    const query = `UPDATE tasks SET title = $1, content = $2, deadline = $3 WHERE id = $4 RETURNING *;`;
+    const value = [details.title, details.content, details.deadline, details.active, id];
+    const query = `UPDATE tasks SET title = $1, content = $2, deadline = $3 active = $4 WHERE id = $5 RETURNING *;`;
     const updatedTask = await pool.query(query, value);
     return {task: updatedTask.rows[0]};
 }

@@ -53,7 +53,7 @@ export async function createTask(req, res) {
 // Write a function that will update the values of a task by id
 export async function updateTask(req, res) {
     const updatedTask = await tasksModel.updateTask(req.params.id, req.body);
-    return res.json({result: updatedTask})
+    return res.json(updatedTask)
 }
 
 /* DELETE */

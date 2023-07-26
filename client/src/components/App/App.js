@@ -12,7 +12,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("Submit"); // for create task
   const [editStatus, setEditStatus] = useState("Edit") // for edit task
-  const [checkedStatus, setCheckedStatus] = useState(false) //for checkboc in edit task
+  // const [checkedStatus, setCheckedStatus] = useState(false) //for checkboc in edit task
   const [id2, setId] = useState(null); // for edit task ???
   // const [details, setDetails] = useState({}); // for edit task
   const [taskById, setTaskById] = useState({}); // for edit task
@@ -32,8 +32,15 @@ function App() {
 }
   }, []);
 
+  // useEffect(() => {
+  //   showData();
+
+  //   //eslint-disable-next-line
+  // }, []);
+
   // Handle submit function for CreateTask component
   async function handlesubmit(event) {
+    console.log(event);
     event.preventDefault();
     const { title, content, deadline } = event.target.elements;
     const details = {
@@ -57,6 +64,8 @@ function App() {
 // Function to save task details in state by id for edit task
 
 async function saveTaskByID(id) {
+  // setTasks(await apiFunction.getTasks());
+  // setShowTasks(true);
   const task = await apiFunction.getTaskByID(id);
   console.log(id);
   
@@ -77,7 +86,9 @@ async function saveTaskByID(id) {
   console.log(id2)
 }
 
-// setTaskById(saveTaskByID)
+// Function to update id and taskById state when tasks state changes
+
+
 
 
  
@@ -86,14 +97,17 @@ async function saveTaskByID(id) {
 //Function to handle edit submit
 async function handleEditSubmit(event) {
   event.preventDefault();
-  const { title, content, deadline } = event.target.elements;
+  console.log(event);
+  console.log(id2);
+  const { title, content, deadline, active } = event.target.elements;
   const details = {
     title: title.value,
     content: content.value,
     deadline: deadline.value,
-    active: checkedStatus,
+    active: active.checked,
   };
-  const id = event.target.id;
+  console.log(details);
+  const id = id2;
   // setId(event.target.id);
   console.log(details);
   try {
@@ -111,10 +125,10 @@ async function handleEditSubmit(event) {
 }
 
 
-// checkUncheckBox for edit task checkbox
-async function checkUncheckBox(event) {
-  setCheckedStatus(event.target.checked)
-}
+//checkUncheckBox for edit task checkbox
+// async function checkUncheckBox(event) {
+//   setCheckedStatus(event.target.checked)
+// }
  
   return (
     <div className="testing-app">
@@ -137,7 +151,7 @@ async function checkUncheckBox(event) {
     taskById={taskById}
     handleEditSubmit={handleEditSubmit}
     editStatus={editStatus}
-    checkUncheckBox={checkUncheckBox}
+    // checkUncheckBox={checkUncheckBox}
     // ref={ref}
     />}></Route>
     </Routes>

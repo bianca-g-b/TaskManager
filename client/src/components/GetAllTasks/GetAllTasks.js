@@ -1,11 +1,28 @@
 import "./GetAllTasks.css";
-import { NavLink } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 
-function GetAllTasks({tasks, showTasks, loading,saveTaskByID}) {
+
+function GetAllTasks({tasks, showTasks, loading, saveTaskByID}) {
+    // const [tasks, setTasks] = useState([]);
+    // const [showTasks, setShowTasks] = useState(true);
+    // const [loading, setLoading] = useState(false);
+
+    // Function to get all tasks when page loads
+    // useEffect(() => {
+    //     async function showData() {
+    //         setTasks(await apiFunction.getTasks());
+    //         setShowTasks(true);
+    //     }
+    //     showData();
+    //     if (!showData && !console.error()) {
+    //       setLoading(false);
+    //   }
+    //     }, []);
     
+    // Function to save task details in state by id for edit task
 
     return (
         <div className = "get-all-container">
@@ -31,7 +48,7 @@ function GetAllTasks({tasks, showTasks, loading,saveTaskByID}) {
             </tr>
             </thead>
             <tbody>
-            {tasks.map((task) => (
+            {tasks && tasks.map((task) => (
                 
                 <tr key={task.id} className="tasks" id={task.id}>
                     
@@ -55,6 +72,7 @@ function GetAllTasks({tasks, showTasks, loading,saveTaskByID}) {
             </table>
             ) :null}
         </div>
+        
     )
 }
 

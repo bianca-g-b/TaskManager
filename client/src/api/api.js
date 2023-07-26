@@ -5,9 +5,10 @@ export async function getTasks() {
             if (!response.ok) {
                 throw new Error ("Request failed!");
             }
+            else {
         const data = await response.json();
             return data
-        }
+        }}
         catch (error) {
             console.log(error);
         }
