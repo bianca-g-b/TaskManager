@@ -43,7 +43,7 @@ function GetAllTasks({tasks, showTasks, loading, saveTaskByID}) {
                 <th>Date Created</th>
                 <th>Deadline</th>
                 <th>Unique ID</th>
-                <th>Status</th>
+                <th>Completed</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -57,7 +57,7 @@ function GetAllTasks({tasks, showTasks, loading, saveTaskByID}) {
                     <td className= "task-date">{task.date.split("T")[0].split("-").reverse().join("-")}</td>
                     <td className= "task-deadline">{task.deadline.split("T")[0].split("-").reverse().join("-")}</td>
                     <td className="id">{task.id}</td>
-                    <td className="task-status">{task.active.toString()}</td>
+                    <td className="task-status">{task.completed.toString()}</td>
                     <td className="task-actions">
                         <NavLink id={task.id} onClick={() => saveTaskByID(task.id)} to={`/${task.id}`} className="edit-task-link">
                         <FontAwesomeIcon icon={icon({name: 'pen-to-square'})} style={{color:"#5e81e8"}}/>

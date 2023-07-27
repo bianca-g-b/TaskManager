@@ -40,7 +40,7 @@ export async function createTask(details) {
         const {data,error} = await supabase
             .from('tasks')
             .insert([
-                {date: currentDate, title: details.title, content: details.content, deadline: details.deadline, active: true}
+                {date: currentDate, title: details.title, content: details.content, deadline: details.deadline, completed: false}
             ])
             .select()
         if (error) {
@@ -58,7 +58,7 @@ export async function editTask(id, details) {
     try {
         const {data, error} = await supabase
             .from('tasks')
-            .update({title: details.title, content: details.content, deadline: details.deadline, active: details.active})
+            .update({title: details.title, content: details.content, deadline: details.deadline, completed: details.completed})
             .eq('id',id)
             .select();
         if (error) {

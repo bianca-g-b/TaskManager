@@ -14,24 +14,6 @@ export async function getTasks() {
         }
     }
 
-// Patch request - to update tasks by deadline    
-export async function updateTasks() {
-    try {
-        const response = await fetch("api/tasks", {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-        const data = await response.json();
-        return data.result;
-    } 
-    catch (error) {
-    console.error('Error:', error);
-    throw new Error ("Failed to update tasks.")
-    }
-    }
-
 // Post request - to create a new task
 export async function createTask(details) {
     try {
@@ -43,7 +25,7 @@ export async function createTask(details) {
             body: JSON.stringify(details)
         });
         const data = await response.json();
-        return data.result;
+        return data;
     } 
     catch (error) {
     console.error('Error:', error);
@@ -87,3 +69,23 @@ export async function getTaskByID(id) {
     }
 }
 
+// Delete request - to delete a task by id
+export async function deleteTask(id) {
+    try {
+        const response = await fetch(`api/tasks/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!response.ok) {
+            throw new Error("Delete task failed!")
+        }
+        const data = await response.json();
+        return data;
+        // return true;
+    } catch (error) {
+        console.log(error)
+        return false;
+    }
+}
