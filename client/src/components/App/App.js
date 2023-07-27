@@ -86,13 +86,6 @@ async function saveTaskByID(id) {
   console.log(id2)
 }
 
-// Function to update id and taskById state when tasks state changes
-
-
-
-
- 
-
 
 //Function to handle edit submit
 async function handleEditSubmit(event) {
@@ -103,11 +96,13 @@ async function handleEditSubmit(event) {
   const details = {
     title: title.value,
     content: content.value,
-    deadline: deadline.value,
-    active: active.checked,
+    deadline: (new Date(deadline.value)).toISOString(),
+    active: !active.checked,
   };
-  console.log(details);
+  console.log("details:",details);
+  console.log(typeof(deadline.value));
   const id = id2;
+  console.log("id:",id);
   // setId(event.target.id);
   console.log(details);
   try {
@@ -146,7 +141,7 @@ async function handleEditSubmit(event) {
     handlesubmit={handlesubmit}
     status={status}
      />}></Route>
-    <Route path="/edittask/:id" element={<EditTask
+    <Route path="/:id" element={<EditTask
     tasks={tasks}
     taskById={taskById}
     handleEditSubmit={handleEditSubmit}

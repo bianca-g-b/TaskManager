@@ -1,16 +1,12 @@
-// Import pg
-import pg from "pg";
+import {createClient} from "@supabase/supabase-js";
 
-// Get connection string to database
-const connectionString = process.env.REACT_APP_CONNECTION_STRING;
+// Connect to Supabase database
 
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
+const supabaseKey = process.env.REACT_APP_SUPABASE_KEY;
 
-// Throw error if connection string not found
-if (!connectionString) {
-    throw new Error("No database connection string found.");
+if (!supabaseUrl || !supabaseKey) {
+    throw new Error("Supabase connection details not found.")
 }
 
-// Define and export pool
-export const pool = new pg.Pool({
-    connectionString,
-})
+export const supabase = createClient(supabaseUrl, supabaseKey, {auth:{persistSession: false}});

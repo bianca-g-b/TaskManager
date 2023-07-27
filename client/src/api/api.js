@@ -24,7 +24,7 @@ export async function updateTasks() {
             }
         });
         const data = await response.json();
-        return data;
+        return data.result;
     } 
     catch (error) {
     console.error('Error:', error);
@@ -62,7 +62,9 @@ export async function editTask(id, details) {
             body: JSON.stringify(details)
         });
         const data = await response.json();
-        return data.result;
+        console.log(data);
+        console.log("date type:", typeof(data.deadline));
+        return data;
     }
     catch (error) {
         console.error("Error:",error);

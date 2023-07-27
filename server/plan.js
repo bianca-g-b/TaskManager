@@ -46,4 +46,9 @@ SET UP tasksRoute.js
 (MODELS >> CONTROLLERS >> ROUTES)
 
 TEST ALL ROUTES IN THUNDER CLIENT
+
+- change from Elephant to Supabase database
+    - make necessary changes to connect
+    - rewrite tasksModels.js, tasksController.js, tasksRoutes.js
+    - test functions to make sure everuthing is working well
 */

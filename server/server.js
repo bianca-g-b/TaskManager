@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 
 // Get port
-const port  = process.env.REACT_APP_PORT || 5000;
+const port  = process.env.REACT_APP_PORT || 5432;
 
 // Parse JSON
 app.use(express.json())
