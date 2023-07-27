@@ -42,10 +42,10 @@ function App() {
     completed: false
     };
     try {
-      const response = await apiFunction.createTask(details);
-      setStatus("Submit");
+      const response = await apiFunction.createTask(details); 
       if (response) {
         console.log("Task created successfully!");
+        setStatus("Added!");
       } else {
         console.error("Create task failed:", response);
       }
@@ -95,9 +95,9 @@ async function handleEditSubmit(event) {
   console.log(details);
   try {
     const response = await apiFunction.editTask(id, details);
-    setEditStatus("Edit");
     if (response) {
       console.log("Task edited successfully!");
+      setEditStatus("Edited!");
     } else {
       console.error("Edit task failed:", response);
     }
