@@ -11,46 +11,45 @@ export async function getTasks() {
         }}
         catch (error) {
             console.log(error);
+            return [];
         }
     }
 
 // Post request - to create a new task
 export async function createTask(details) {
     try {
-        const response = await fetch("api/tasks", {
+        await fetch("api/tasks", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(details)
         });
-        const data = await response.json();
-        return data;
+        const updatedTasks = await getTasks();
+        return updatedTasks;
     } 
     catch (error) {
     console.error('Error:', error);
-    throw new Error("Create task failed");
+    return null;
     }
 }
 
 // Patch request - to edit a task
 export async function editTask(id, details) {
     try {
-        const response = await fetch(`api/tasks/${id}`, {
+        await fetch(`api/tasks/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(details)
         });
-        const data = await response.json();
-        console.log(data);
-        console.log("date type:", typeof(data.deadline));
-        return data;
+        const updatedTasks = await getTasks();
+        return updatedTasks;
     }
     catch (error) {
         console.error("Error:",error);
-        throw new Error ("Edit task failed.")
+        return null;
     }
 }
 
