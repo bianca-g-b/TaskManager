@@ -1,3 +1,5 @@
+import "./Modal.css"
+
 function Modal({isModalOpen, handleDelete, closeModal}) {
     if (!isModalOpen) return null;
     return(

@@ -1,0 +1,78 @@
+.add-task-full-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+.add-task-title{
+    display: flex;
+    width: 73%;
+    margin-bottom: 3%;
+}
+
+.add-task-form {
+    display: flex;
+    background-color: white;
+    justify-content:space-evenly;
+    flex-direction: column;
+    height: 45%;
+    width: 70%;
+    padding: 2%;
+    border-radius: 10px;
+}
+
+.form-component {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.add-title-input {
+    border-radius: 7px;
+    border: solid 1px rgb(180, 180, 180);
+    margin-top: 0.7%;
+    padding: 1.5%;
+}
+
+.add-title-input::placeholder {
+    font-size: 1em;
+    letter-spacing: 0.9px;
+}
+
+.add-content-input {
+    border-radius: 7px;
+    border: solid 1px rgb(180, 180, 180);
+    margin-top: 0.7%;
+    padding-left: 1.5%;
+    padding-top: 1.5%;
+}
+
+.add-content-input::placeholder {
+    font-size: 0.9em;
+}
+
+.add-deadline-input {
+    border-radius: 7px;
+    border: solid 1px rgb(180, 180, 180);
+    margin-top: 0.7%;
+    padding: 1%;
+    color:#7c7c7c;
+}
+
+.add-task-button {
+    background-color: #4261FF;
+    border-radius: 7px;
+    border: none;
+    color: white;
+    padding: 0.7%;
+    margin-top: 1.5%;
+    cursor: pointer;
+    width: 15%;
+}

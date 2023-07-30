@@ -12,8 +12,8 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [showTasks, setShowTasks] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("Submit"); // for create task
-  const [editStatus, setEditStatus] = useState("Edit") // for edit task
+  const [status, setStatus] = useState("Create Task"); // for create task
+  const [editStatus, setEditStatus] = useState("Edit Task") // for edit task
   const [id2, setId] = useState(null); // for edit task ???
   const [taskById, setTaskById] = useState({}); // for edit task
   const [isModalOpen, setIsModalOpen] = useState(false); // for delete task
@@ -57,7 +57,7 @@ function App() {
         }
         // Set editStatusTimer to clear editStatus after 2 seconds
         const timer = setTimeout(() => {
-          setStatus("Submit");
+          setStatus("Create Task");
         }, 2000);
         // Set editStatusTimer
         setCreateTaskTimer(timer);
@@ -123,7 +123,7 @@ async function handleEditSubmit(event) {
       }
       // Set editStatusTimer to clear editStatus after 2 seconds
       const timer = setTimeout(() => {
-          setEditStatus("Edit");
+          setEditStatus("Edit Task");
       }, 2000);
       // Set editStatusTimer
       setEditStatusTimer(timer);
@@ -169,8 +169,6 @@ async function handleDelete() {
 
   return (
     <div className="testing-app">
-    <div className="buttons-container">
-    </div>
     <Modal 
         isModalOpen={isModalOpen} closeModal={closeModal}
         handleDelete={handleDelete} />
