@@ -1,4 +1,4 @@
-.add-task-full-form {
+.edit-task-full-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,13 +8,13 @@
     width: 100%;
 }
 
-.add-task-title{
+.edit-task-title{
     display: flex;
     width: 73%;
     margin-bottom: 3%;
 }
 
-.add-task-form {
+.edit-task-form {
     display: flex;
     background-color: white;
     justify-content:space-evenly;
@@ -34,19 +34,14 @@
     letter-spacing: 1px;
 }
 
-.add-title-input {
+.edit-title-input {
     border-radius: 7px;
     border: solid 1px rgb(180, 180, 180);
     margin-top: 0.7%;
     padding: 1.5%;
 }
 
-.add-title-input::placeholder {
-    font-size: 1em;
-    letter-spacing: 0.9px;
-}
-
-.add-content-input {
+.edit-content-input {
     border-radius: 7px;
     border: solid 1px rgb(180, 180, 180);
     margin-top: 0.7%;
@@ -54,20 +49,15 @@
     padding-top: 1.5%;
 }
 
-.add-content-input::placeholder {
-    font-size: 0.9em;
-}
-
-.add-deadline-input {
+.edit-deadline-input {
     border-radius: 7px;
     border: solid 1px rgb(180, 180, 180);
     margin-top: 0.7%;
     padding: 1%;
-    color:#7c7c7c;
-    cursor: text;
+    cursor:text;
 }
 
-.add-task-button {
+.edit-task-button {
     background-color: #4261FF;
     border-radius: 7px;
     border: none;
@@ -78,50 +68,50 @@
     width: 15%;
 }
 
-/*Media queries*/
+/*Media queries for button*/
 @media (max-width: 1000px) {
-    .add-task-button {
+    .edit-task-button {
         width: 20%;
         padding: 1.5%;
     }
 }
 
 @media (max-width: 800px) {
-    .add-task-button {
+    .edit-task-button {
         width: 25%;
         padding: 2%;
     }
 }
 
 @media (max-width: 600px) {
-    .add-task-button {
+    .edit-task-button {
         width: 30%;
         padding: 2.5%;
     }
 }
 
 @media (max-width: 450px) {
-    .add-task-button {
+    .edit-task-button {
         width: 40%;
         padding: 3%;
     }
 }
 
 @media (max-height: 650px) {
-    .add-task-form {
+    .edit-task-form {
         height: 60%;
         padding: 2.5%;
     }
 }
 
 @media (max-width: 1000px) {
-    .add-task-form {
+    .edit-task-form {
         padding: 3%;
     }
 }
 
 @media (max-width: 600px) {
-    .add-task-form {
+    .edit-task-form {
         padding: 5%;
     }
 }

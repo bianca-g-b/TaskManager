@@ -16,7 +16,7 @@
     justify-content: space-around;
     align-items: center;
     text-align: center;
-    width: 17%;
+    width: 20%;
     height: 30%;
     background: white;
     border-radius: 10px;
@@ -42,4 +42,49 @@
 .modal-button:hover {
     background: rgb(241, 99, 99);
     color: white;
+}
+
+/*modal-div media queries*/
+@media (max-width: 1350px) {
+    .modal-div {
+        width: 23%;
+    }
+}
+
+@media (max-width: 1050px) {
+    .modal-div {
+        width: 25%;
+    }
+}
+
+@media (max-width: 850px) {
+    .modal-div {
+        width: 27%;
+        height: 27%;
+    }
+}
+
+@media (max-width: 650px) {
+    .modal-div {
+        width: 30%;
+    }
+}
+
+@media (max-width: 550px) {
+    .modal-div {
+        width: 40%;
+    }
+}
+
+@media (max-height: 800px) {
+    .modal-div {
+        width: 50%;
+        height: 50%;
+    }
+}
+
+@media (max-width: 450px) {
+    .modal-div {
+        width: 60%;
+    }
 }

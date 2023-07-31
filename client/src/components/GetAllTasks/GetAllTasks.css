@@ -1,50 +1,10 @@
-.get-all-table {
-    display: flex;
-    align-items:center;
-    flex-direction:column;
-    justify-content: center;
-    margin-top: 1%;
-    margin-left: 0.1%;
-}
-  
-.tasks {
-    width: 70%;
-    display: table;
+/*Table styling*/
+table {
+    border-collapse: separate; 
+    border-spacing: 0 5px;
     table-layout: fixed;
-    border-collapse: collapse;
-    background-color: rgb(255, 239, 241);
-}
-th {
-    color:rgb(21, 51, 41);
-    background-color: rgb(221, 232, 139);
-    border: solid 1px rgb(21, 51, 41);
-    background-color: rgb(182, 239, 251);
-} 
-  
-td {
-    display: table-cell;
-    text-align: center;
-    border: 1px solid pink;
-    vertical-align: middle;
-    color: rgb(21, 51, 41);
-}
-
-tr:hover {
-    /* background-color: rgb(182, 239, 251); */
-    background-image: linear-gradient(to right, rgb(168, 234, 250), rgb(182, 239, 251));
-}
-
-.get-all-buttons {
-    background-image: linear-gradient(to right, rgb(102, 194, 217), rgb(182, 239, 251));
-    border: solid 1px rgb(21, 51, 41);
-    height: 100%;
-    width:max-content;
-}
-
-.buttons-container {
-    display: flex;
-    justify-content: row;
-    margin-top: 20%;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .create-task-button {
@@ -53,4 +13,180 @@ tr:hover {
 .create-task-link {
     text-decoration: none;
     color: white;
+}
+
+.get-all-table {
+    background-color: white;
+    padding: 3%;
+    border-radius: 15px;
+}
+
+th {
+    border-bottom: 1px solid #414142;
+    border-collapse: collapse; 
+    letter-spacing: 1px;
+    text-align: left;
+    min-width: fit-content;
+}
+
+td {
+    border-bottom: 1px solid #d5d5d5;
+    border-collapse: collapse; 
+    letter-spacing: 1px;
+    text-align: left;
+    display: table-cell;
+}
+
+th, td {
+    width: 100%;
+    padding: 1%;
+}
+
+.unique-id {
+    width: 60%;
+}
+
+.dates {
+    width: 65%;
+}
+
+.task-title {
+    width: 70%;
+}
+
+.task-content {
+    width: 120%;
+    padding-right: 3%;
+}
+
+.task-status {
+    width: 65%;
+}
+
+.task-actions {
+    width: 60%;
+}
+
+/*Title and button styling*/
+
+.get-all-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin-bottom: 1%;
+}
+
+.create-task-button {
+        background-color: #4261FF;
+        border-radius: 7px;
+        border: none;
+        color: white;
+        padding: 0.7%;
+        margin-top: 1.5%;
+        cursor: pointer;
+        width: 10%;
+        margin-bottom: 1%;
+}
+
+.edit-task-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    width: 55%;
+}
+
+/*Media queries*/
+@media screen and (max-width: 1300px) {
+    .create-task-button {
+        width: 12%;
+    }
+}
+
+@media only screen and (max-width:1000px) {
+    .task-status,
+    .task-actions,
+    .unique-id,
+    .dates,
+    .task-title,
+    .task-content
+    {
+        font-size: 0.9em;
+        width: 100%;
+    }
+    .create-task-button {
+        width: 15%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .get-all-table {
+        font-size: 0.9em;
+    }
+    .task-title,
+    .task-content,
+    .task-status,
+    .task-actions,
+    .unique-id,
+    .dates,
+    .create-task-button,
+    .edit-task-button,
+    .header-container,
+    .get-all-container
+    {
+        font-size: 0.9em;
+    }
+    .get-all-table {
+        width: 100%;
+    }
+    .create-task-button {
+        width: 17%;
+    }
+    .header-container {
+        width: 95%;
+    }
+    .get-all-container {
+        width: 95%;
+    }
+    .edit-task-link {
+        font-size: 1.2em;
+    }
+    .delete-icon {
+        font-size: 1.2em;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .task-status,
+    .task-actions,
+    .unique-id,
+    .dates,
+    .task-title,
+    .task-content {
+        font-size: 0.7em;
+        width: 100%;
+    }
+    .create-task-button {
+        width: 30%;
+    }
+}
+
+@media only screen and (max-width:450px) {
+    .task-status,
+    .task-actions,
+    .unique-id,
+    .dates,
+    .task-title,
+    .task-content
+    {
+        font-size: 0.55em;
+        width: 100%;
+    }
 }
