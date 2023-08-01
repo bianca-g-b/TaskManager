@@ -64,7 +64,7 @@ th, td {
 }
 
 .unique-id {
-    width: 60%;
+    width: 50%;
 }
 
 .dates {
@@ -81,11 +81,18 @@ th, td {
 }
 
 .task-status {
-    width: 65%;
+    width: 40%;
+    text-align: center;
+    justify-content: center;
+    padding: 0;
 }
 
 .task-actions {
-    width: 60%;
+    width: 50%;
+    justify-content: center;
+    text-align: center;
+    padding-left: 5.5%;
+
 }
 
 /*Title and button styling*/
@@ -119,15 +126,50 @@ th, td {
 
 .edit-task-button-container {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items:center;
-    width: 55%;
+    width: 100%;
+    
+}
+
+.task-active {
+    display: flex;
+    /* width: 80%; */
+    background-color: #158723;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    align-items: center;
+    justify-content: center;
+    padding: 2% 0 2% 0;
+}
+
+.task-inactive {
+    display: flex;
+    /* width: 80%; */
+    background-color: rgb(241, 99, 99);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    border-radius: 25px;
+    align-items: center;
+    justify-content: center;
+    padding: 2% 0 2% 0;
 }
 
 /*Media queries*/
+@media screen and (max-width: 1400px) {
+    .task-status {
+        width: 60%;
+    }
+}
+
 @media screen and (max-width: 1300px) {
     .create-task-button {
         width: 12%;
+    }
+    .task-status {
+        width: 60%;
     }
 }
 

@@ -24,7 +24,7 @@ function GetAllTasks({
 
     const hasTasks = tasks.length > 0;
 
-    console.log("tasks: ",tasks)
+    // console.log("tasks: ",tasks)
 
     return (
         <div className = {`get-all-container ${hasTasks ? '' : 'create-task-large-container'}`}>
@@ -52,7 +52,7 @@ function GetAllTasks({
                 <th className="dates">Date Created</th>
                 <th className="dates">Deadline</th>
                 <th className="unique-id">Unique ID</th>
-                <th className="task-status">Completed</th>
+                <th className="task-status">Status</th>
                 <th className="task-actions">Actions</th>
             </tr>
             </thead>
@@ -68,7 +68,7 @@ function GetAllTasks({
                     <td className= "task-date dates">{task.date.split("-").reverse().join("-")}</td>
                     <td className= "task-deadline dates">{task.deadline.split("-").reverse().join("-")}</td>
                     <td className="id unique-id">{task.id}</td>
-                    <td className="task-status">{task.completed.toString()}</td>
+                    <td className="task-status"><p className={task.status ? `task-active` : `task-inactive`}>{task.status ? 'Active' :  'Inactive'}</p></td>
                     <td className="task-actions">
                     <div className="edit-task-button-container">
                         <NavLink id={task.id} onClick={() => saveTaskByID(task.id)} to={`/${task.id}`} className="edit-task-link">
@@ -93,7 +93,7 @@ function GetAllTasks({
                 nextLabel={">"}
                 onPageChange={handlePageChange}
                 pageCount={totalPages}
-                currentPage={currentPage}
+                // currentPage={currentPage}
                 currentTasks={currentTasks}
                 pageClassName="page-link"
                 containerClassName={"pagination-container"}
@@ -102,6 +102,9 @@ function GetAllTasks({
                 renderOnZeroPageCount={null}
                 previousClassName={"previous-button"}
                 nextClassName={"next-button"}
+                forcePage = {currentPage}
+                pageRangeDisplayed={2}
+                marginPagesDisplayed={1}
              />
         </div>
         

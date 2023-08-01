@@ -14,13 +14,14 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("Create Task"); // for create task
   const [editStatus, setEditStatus] = useState("Edit Task") // for edit task
-  const [id2, setId] = useState(null); // for edit task ???
+  const [id2, setId] = useState(null); // for edit task and delete task
   const [taskById, setTaskById] = useState({}); // for edit task
   const [isModalOpen, setIsModalOpen] = useState(false); // for delete task
   const [createTaskTimer, setCreateTaskTimer] = useState(null); // for create task timer
   const [editStatusTimer, setEditStatusTimer] = useState(null); // for edit task status timer
   const [totalPages, setTotalPages] = useState(0) // for pagination
   const [currentPage, setCurrentPage] = useState(0) // for pagination
+  const [currentTasks, setCurrentTasks] = useState([]) // for pagination
   const tasksPerPage = 10;
   const location = useLocation();
 
@@ -32,8 +33,6 @@ function App() {
           const response = await apiFunction.getTasks()
           setTasks(response);
           setShowTasks(true);
-          // console.log(tasks.length); // consider adding the value somewhere else as wellS
-          // console.log(totalPages);
     } catch (error) {
         console.error("Error:", error);
     } finally {
@@ -46,17 +45,16 @@ function App() {
   }
   }, [location]);
 
-  // Use effect to update totalPages when tasks changes
+  // Use effect to update totalPages when tasks change
   useEffect(() => {
     setTotalPages(Math.ceil(tasks.length/10));
-    console.log(tasks.length); // look at isFocused
-    // console.log(totalPages);
+  // look at isFocused
   },[tasks])
 
  
   // Handle submit function for CreateTask component
   async function handlesubmit(event) {
-    console.log(event);
+    // console.log(event);
     event.preventDefault();
     const { title, content, deadline } = event.target.elements;
     const details = {
@@ -64,7 +62,7 @@ function App() {
         title: title.value,
         content: content.value,
         deadline: deadline.value,
-        completed: false
+        status: true
     };
     try {
       const updatedTasks = await apiFunction.createTask(details); 
@@ -84,7 +82,7 @@ function App() {
         setCreateTaskTimer(timer);
 
         setTasks(updatedTasks);
-        console.log(tasks);
+        // console.log(tasks);
       } else {
         console.error("Create task failed:", updatedTasks);
       }
@@ -95,13 +93,9 @@ function App() {
 
 // Function to save task details in state by id for edit task
 async function saveTaskByID(id) {
-  const task = await apiFunction.getTaskByID(id);
-  console.log(id);
-  
+  // const task = await apiFunction.getTaskByID(id); // review code, cosider deleting
   // map through tasks and find task by id
   for (let i = 0; i < tasks.length; i++) {
-    console.log(tasks[i].id);
-    console.log(id);
     if (tasks[i].id === id) {
       console.log("task by id:", tasks[i])
       setTaskById(tasks[i]);
@@ -109,29 +103,21 @@ async function saveTaskByID(id) {
       break;
     }
 }
-  console.log(task);
-  console.log(taskById)
-  console.log(id2)
+  // console.log(task);
 }
 
 
 //Function to handle edit submit
 async function handleEditSubmit(event) {
   event.preventDefault();
-  console.log(event);
-  console.log(id2);
-  const { title, content, deadline, completed } = event.target.elements;
+  const { title, content, deadline, status } = event.target.elements;
   const details = {
     title: title.value,
     content: content.value,
     deadline: (new Date(deadline.value)).toISOString(),
-    completed: completed.checked,
+    status: !status.checked,
   };
-  console.log("details:",details);
-  console.log(typeof(deadline.value));
   const id = id2;
-  console.log("id:",id);
-  console.log(details);
   try {
     const updatedTasks = await apiFunction.editTask(id, details);
     if (updatedTasks) {
@@ -150,7 +136,7 @@ async function handleEditSubmit(event) {
       setEditStatusTimer(timer);
 
       setTasks(updatedTasks);
-      console.log(tasks);
+      // console.log(tasks);
     } else {
       console.error("Edit task failed:", updatedTasks);
     }
@@ -171,7 +157,6 @@ function closeModal() {
 // Function to delete task
 async function handleDelete() {
   const id = id2;
-  console.log("id:",id);
   try {
     const response = await apiFunction.deleteTask(id);
     if (response) {
@@ -190,13 +175,23 @@ async function handleDelete() {
 
 // Function to handle page change
 const firstIndex = currentPage * tasksPerPage;
-  const lastIndex = firstIndex + tasksPerPage;
-const currentTasks = tasks.slice(firstIndex, lastIndex)
-console.log("currentTasks: ",currentTasks)
+const lastIndex = firstIndex + tasksPerPage;
 
-function handlePageChange(selectedPage) {
+function handlePageChange(selectedPage) {  
+  setCurrentTasks(tasks.slice(firstIndex, lastIndex))
+  console.log("currentTasks: ",currentTasks)
   setCurrentPage(selectedPage.selected)
+  console.log("selectedPage: ",selectedPage);
 }
+
+// Use effect to update currentTasks and currentPage
+useEffect(()=>{
+  setCurrentTasks(tasks.slice(firstIndex, lastIndex))
+  setCurrentPage(currentPage)
+  console.log("current page: ",currentPage);
+  console.log("first index: ",firstIndex);
+  console.log("last index: ",lastIndex);
+},[tasks, firstIndex, lastIndex, currentPage])
 
 
   return (

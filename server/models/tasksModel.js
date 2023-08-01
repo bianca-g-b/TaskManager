@@ -6,6 +6,7 @@ export async function getAllTasks() {
         const {data, error} = await supabase
             .from('tasks') 
             .select('*')
+            .order('status', {ascending: false})
             .order('deadline', {ascending: true});
     if (error) {
         throw new Error(error.message);
@@ -40,7 +41,7 @@ export async function createTask(details) {
         const {data,error} = await supabase
             .from('tasks')
             .insert([
-                {date: currentDate, title: details.title, content: details.content, deadline: details.deadline, completed: false}
+                {date: currentDate, title: details.title, content: details.content, deadline: details.deadline, status: true}
             ])
             .select()
         if (error) {
@@ -58,7 +59,7 @@ export async function editTask(id, details) {
     try {
         const {data, error} = await supabase
             .from('tasks')
-            .update({title: details.title, content: details.content, deadline: details.deadline, completed: details.completed})
+            .update({title: details.title, content: details.content, deadline: details.deadline, status: details.status})
             .eq('id',id)
             .select();
         if (error) {

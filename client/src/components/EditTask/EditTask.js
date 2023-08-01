@@ -3,14 +3,14 @@ import {useState, useEffect} from "react";
 import moment from "moment";
 
 function EditTask({handleEditSubmit, taskById, editStatus}) {
-    console.log("editTask task by id: ",taskById)
+    // console.log("editTask task by id: ",taskById)
     
     const todayDate = new Date().toISOString()
 
     if (taskById && taskById.deadline !== undefined) {
         const momentDeadline = moment(taskById.deadline, "YYYY-MM-DD").locale("en-GB");
         taskById.deadline = momentDeadline.format("YYYY-MM-DD");
-        console.log("taskById.deadline: ",taskById.deadline) 
+        // console.log("taskById.deadline: ",taskById.deadline) 
     } else {
         console.log("taskById.date is undefined")
     }
@@ -19,17 +19,17 @@ function EditTask({handleEditSubmit, taskById, editStatus}) {
         title: taskById.title || '',
         content: taskById.content || '',
         deadline: taskById.deadline || todayDate,
-        completed: taskById.completed || false,
+        status: taskById.status || true,
         id: taskById.id || 0
     })
-    console.log("editedTask: ",editedTask)
+    // console.log("editedTask: ",editedTask)
 
     // Wrap setEditedTask in a useEffect hook to update when taskById changes
     useEffect(() => {
-        setEditedTask({title: taskById.title , content: taskById.content, deadline: taskById.deadline, completed: taskById.completed, id: taskById.id})
+        setEditedTask({title: taskById.title , content: taskById.content, deadline: taskById.deadline, status: taskById.status, id: taskById.id})
     }, [taskById])
 
-    console.log("editedTask2: ",editedTask)
+    // console.log("editedTask2: ",editedTask)
 
     return(  
         <form onSubmit={handleEditSubmit} className="edit-task-full-form" >
@@ -68,13 +68,13 @@ function EditTask({handleEditSubmit, taskById, editStatus}) {
                     
                 </div>
                 <div className="mark-as-checkbox">
-                    <label htmlFor="completed">Mark as done</label>
+                    <label htmlFor="status">Mark as done</label>
                     <input
                         className="edit-completed-input"
-                        value={editedTask.completed}
-                        checked={editedTask.completed}
-                        onChange={(event) => setEditedTask({...editedTask, completed: event.target.checked})}
-                        type="checkbox" id="completed"
+                        value={editedTask.status}
+                        checked={!editedTask.status}
+                        onChange={(event) => setEditedTask({...editedTask, status: !event.target.checked})}
+                        type="checkbox" id="status"
                     />
                 </div>
                 <div className="add-task-button-container">
