@@ -1,4 +1,15 @@
 /*Table styling*/
+.create-task-large-button{
+    min-height: 100%;
+    min-width: 30%;
+}
+
+.loading-message,
+.no-tasks-message {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
 table {
     border-collapse: separate; 
     border-spacing: 0 5px;
@@ -9,6 +20,16 @@ table {
 
 .create-task-button {
     background-color: #4261FF;
+}
+
+.create-task-large-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    min-width: 80%;
+    background-color: white;
+    border-radius: 15px;
 }
 .create-task-link {
     text-decoration: none;
@@ -189,4 +210,38 @@ th, td {
         font-size: 0.55em;
         width: 100%;
     }
+}
+
+/*ReactPaginate styling*/
+.pagination-container {
+    display: flex;
+    list-style: none;
+    align-items: right;
+    justify-content: space-evenly;
+    width: 20%;
+    cursor: pointer;
+}
+
+.disabled {
+    color: grey;
+    cursor: not-allowed;
+}
+
+.active-page {
+    background-color: #4261FF;
+    color: white;
+    border: none;
+    padding-right: 2.1%;
+    padding-left: 1.7%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    border-radius: 5px;
+}
+
+.page-link {
+    border: none;
+    padding-right: 2.1%;
+    padding-left: 1.7%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
 }

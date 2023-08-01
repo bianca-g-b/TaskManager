@@ -2,6 +2,7 @@ import "./GetAllTasks.css";
 import { NavLink} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
+import ReactPaginate from "react-paginate";
 
 
 function GetAllTasks({
@@ -10,28 +11,38 @@ function GetAllTasks({
     loading, 
     saveTaskByID, 
     openModal,
-
+    totalPages,
+    currentPage,
+    handlePageChange,
+    currentTasks,
 }) 
     {
     const handleButtonClick = (id) => {
         saveTaskByID(id);
         openModal();
-    }
+    };
+
+    const hasTasks = tasks.length > 0;
+
     console.log("tasks: ",tasks)
 
     return (
-        <div className = "get-all-container">
-        <div className="header-container">
+        <div className = {`get-all-container ${hasTasks ? '' : 'create-task-large-container'}`}>
+        <div className="header-container" >
         <h1 className="task-list-title">Task Lists</h1>
-        <button className="create-task-button">
+        <button className={`create-task-button ${hasTasks ? '' : 'create-task-large-button'}`}>
         <NavLink to="/addtask" className="create-task-link">Add New Task</NavLink>
         </button>
         </div>
             {loading ? (
-                <p>Loading...</p>
+                <div className="loading-container">
+                <p className="loading-message">Loading...</p>
+                </div>
             ) :showTasks ? (
                 tasks.length === 0 ? (
-          <p>No tasks found.</p>
+            <div className="loading-error-container">
+            <p className="no-tasks-message">No tasks found.</p>
+            </div>
         ) : (
             <table className = "get-all-table">
             <thead className="tasks-titles">
@@ -48,7 +59,7 @@ function GetAllTasks({
 
            
             <tbody>
-            {tasks && tasks.map((task) => (
+            {currentTasks && currentTasks.map((task) => (
                 
                 <tr key={task.id} className="tasks" id={task.id}>
                     
@@ -77,6 +88,21 @@ function GetAllTasks({
             </table>
         )
             ) :null}
+            <ReactPaginate
+                breakLabel={"..."}
+                nextLabel={">"}
+                onPageChange={handlePageChange}
+                pageCount={totalPages}
+                currentPage={currentPage}
+                currentTasks={currentTasks}
+                pageClassName="page-link"
+                containerClassName={"pagination-container"}
+                activeClassName={"active-page"}
+                previousLabel={"<"}
+                renderOnZeroPageCount={null}
+                previousClassName={"previous-button"}
+                nextClassName={"next-button"}
+             />
         </div>
         
     )

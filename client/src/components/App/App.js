@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState, useEffect} from "react";
 import * as apiFunction from "../../api/api.js";
-import {Routes, Route } from "react-router-dom";
+import {Routes, Route, useLocation} from "react-router-dom";
 import GetAllTasks from "../GetAllTasks/GetAllTasks";
 import CreateTask from "../CreateTask/CreateTask";
 import EditTask from "../EditTask/EditTask";
@@ -19,18 +19,39 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false); // for delete task
   const [createTaskTimer, setCreateTaskTimer] = useState(null); // for create task timer
   const [editStatusTimer, setEditStatusTimer] = useState(null); // for edit task status timer
+  const [totalPages, setTotalPages] = useState(0) // for pagination
+  const [currentPage, setCurrentPage] = useState(0) // for pagination
+  const tasksPerPage = 10;
+  const location = useLocation();
 
-  // Function to get all tasks when page loads
+
+  // Function to get all tasks when page loads or when location changes
   useEffect(() => {
-    async function showData() {
-        setTasks(await apiFunction.getTasks());
-        setShowTasks(true);
+      async function fetchData() {
+        try {
+          const response = await apiFunction.getTasks()
+          setTasks(response);
+          setShowTasks(true);
+          // console.log(tasks.length); // consider adding the value somewhere else as wellS
+          // console.log(totalPages);
+    } catch (error) {
+        console.error("Error:", error);
+    } finally {
+        setLoading(false);
     }
-    showData();
-    if (!showData && !console.error()) {
+  }
+    fetchData();
+    if (!fetchData && !console.error()) {
         setLoading(false);
   }
-  }, []);
+  }, [location]);
+
+  // Use effect to update totalPages when tasks changes
+  useEffect(() => {
+    setTotalPages(Math.ceil(tasks.length/10));
+    console.log(tasks.length); // look at isFocused
+    // console.log(totalPages);
+  },[tasks])
 
  
   // Handle submit function for CreateTask component
@@ -167,6 +188,17 @@ async function handleDelete() {
   }
 }
 
+// Function to handle page change
+const firstIndex = currentPage * tasksPerPage;
+  const lastIndex = firstIndex + tasksPerPage;
+const currentTasks = tasks.slice(firstIndex, lastIndex)
+console.log("currentTasks: ",currentTasks)
+
+function handlePageChange(selectedPage) {
+  setCurrentPage(selectedPage.selected)
+}
+
+
   return (
     <div className="testing-app">
     <Modal 
@@ -179,6 +211,10 @@ async function handleDelete() {
           loading={loading}
           saveTaskByID={saveTaskByID}
           openModal={openModal}
+          totalPages={totalPages}
+          currentPage={currentPage}
+          handlePageChange={handlePageChange}
+          currentTasks={currentTasks}
           />}>  
       </Route>
       <Route path="/addtask" element={<CreateTask 
