@@ -1,7 +1,7 @@
 // Get request - to view all tasks
 export async function getTasks() {
     try {
-        const response = await fetch("api/tasks");
+        const response = await fetch(`/api/tasks`);
             if (!response.ok) {
                 throw new Error ("Request failed!");
             }

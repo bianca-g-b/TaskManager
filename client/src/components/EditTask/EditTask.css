@@ -115,3 +115,25 @@
         padding: 5%;
     }
 }
+
+.back-to-all-tasks-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 78%;
+    margin-bottom: 3%;
+}
+
+.back-to-all-tasks-link {
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+    font-size: large;
+    letter-spacing: 1px;
+    margin-top: 1%;
+    margin-left: 1%;
+    cursor: pointer;
+}
+
+.back-to-all-tasks-link:hover {
+    color: #4261FF;
+}

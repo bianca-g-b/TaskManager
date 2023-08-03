@@ -1,8 +1,9 @@
 import "./EditTask.css";
 import {useState, useEffect} from "react";
+import { NavLink } from "react-router-dom";
 import moment from "moment";
 
-function EditTask({handleEditSubmit, taskById, editStatus}) {
+function EditTask({handleEditSubmit, taskById, editStatus, currentPage}) {
     // console.log("editTask task by id: ",taskById)
     
     const todayDate = new Date().toISOString()
@@ -33,6 +34,9 @@ function EditTask({handleEditSubmit, taskById, editStatus}) {
 
     return(  
         <form onSubmit={handleEditSubmit} className="edit-task-full-form" >
+        <div className="back-to-all-tasks-container">
+            <NavLink to={`/?page=${currentPage}`} className="back-to-all-tasks-link">&#8701; Back to Tasks</NavLink>
+        </div>
             <h1 className="edit-task-title">Edit Task</h1>
             <div className = "edit-task-form">
                 <div className="form-component">

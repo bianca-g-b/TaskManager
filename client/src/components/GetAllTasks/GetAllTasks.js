@@ -3,6 +3,7 @@ import { NavLink} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import ReactPaginate from "react-paginate";
+import { useAuthContext } from "../../context/AuthProvider.js";
 
 
 function GetAllTasks({
@@ -17,6 +18,8 @@ function GetAllTasks({
     currentTasks,
 }) 
     {
+    const { handleLogout } = useAuthContext();
+
     const handleButtonClick = (id) => {
         saveTaskByID(id);
         openModal();
@@ -24,15 +27,20 @@ function GetAllTasks({
 
     const hasTasks = tasks.length > 0;
 
-    // console.log("tasks: ",tasks)
-
+    const handleLogoutClick = () => {
+        handleLogout();
+      };
+ 
     return (
         <div className = {`get-all-container ${hasTasks ? '' : 'create-task-large-container'}`}>
+            <NavLink to="/login" onClick={handleLogoutClick}
+            >Logout</NavLink>
+    
         <div className="header-container" >
         <h1 className="task-list-title">Task Lists</h1>
-        <button className={`create-task-button ${hasTasks ? '' : 'create-task-large-button'}`}>
-        <NavLink to="/addtask" className="create-task-link">Add New Task</NavLink>
-        </button>
+        {/* <button className={`create-task-button ${hasTasks ? '' : 'create-task-large-button'}`}> */}
+        <NavLink to="/addtask" className={`create-task-link create-task-button ${hasTasks ? '' : 'create-task-large-button'}` }>Add New Task</NavLink>
+        {/* </button> */}
         </div>
             {loading ? (
                 <div className="loading-container">
@@ -93,7 +101,7 @@ function GetAllTasks({
                 nextLabel={">"}
                 onPageChange={handlePageChange}
                 pageCount={totalPages}
-                // currentPage={currentPage}
+                currentPage={currentPage}
                 currentTasks={currentTasks}
                 pageClassName="page-link"
                 containerClassName={"pagination-container"}

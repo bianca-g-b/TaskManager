@@ -1,11 +1,15 @@
 import "./App.css";
 import { useState, useEffect} from "react";
 import * as apiFunction from "../../api/api.js";
-import {Routes, Route, useLocation} from "react-router-dom";
+import {Routes, Route, useLocation, useNavigate} from "react-router-dom";
 import GetAllTasks from "../GetAllTasks/GetAllTasks";
 import CreateTask from "../CreateTask/CreateTask";
 import EditTask from "../EditTask/EditTask";
 import Modal from "../Modal/Modal.js";
+import Login from "../Login/Login.js";
+import PrivateRoute from "../../routes/PrivateRoute";
+import {AuthProvider } from "../../context/AuthProvider.js";
+import Homepage from "../Homepage/Homepage";
 
 
 function App() {
@@ -24,6 +28,7 @@ function App() {
   const [currentTasks, setCurrentTasks] = useState([]) // for pagination
   const tasksPerPage = 10;
   const location = useLocation();
+  const navigate = useNavigate();
 
 
   // Function to get all tasks when page loads or when location changes
@@ -181,6 +186,7 @@ function handlePageChange(selectedPage) {
   setCurrentTasks(tasks.slice(firstIndex, lastIndex))
   console.log("currentTasks: ",currentTasks)
   setCurrentPage(selectedPage.selected)
+  navigate(`/?page=${selectedPage.selected +1}`)
   console.log("selectedPage: ",selectedPage);
 }
 
@@ -200,28 +206,44 @@ useEffect(()=>{
         isModalOpen={isModalOpen} closeModal={closeModal}
         handleDelete={handleDelete} />
     <Routes>
-      <Route path="/" element={<GetAllTasks 
-          tasks={tasks}
-          showTasks={showTasks}
-          loading={loading}
-          saveTaskByID={saveTaskByID}
-          openModal={openModal}
-          totalPages={totalPages}
-          currentPage={currentPage}
-          handlePageChange={handlePageChange}
-          currentTasks={currentTasks}
-          />}>  
+    <Route path="/homepage/*" element={<AuthProvider><Homepage /></AuthProvider>} />
+    <Route path="/login/*" element={<AuthProvider><Login /></AuthProvider>}>
       </Route>
-      <Route path="/addtask" element={<CreateTask 
-          handlesubmit={handlesubmit}
-          status={status}/>}>
-      </Route>
-      <Route path="/:id" element={<EditTask
-          tasks={tasks}
-          taskById={taskById}
-          handleEditSubmit={handleEditSubmit}
-          editStatus={editStatus}/>}>
-      </Route>
+
+      <Route path={`/`} element={
+        <PrivateRoute>
+          <GetAllTasks 
+            tasks={tasks}
+            showTasks={showTasks}
+            loading={loading}
+            saveTaskByID={saveTaskByID}
+            openModal={openModal}
+            totalPages={totalPages}
+            currentPage={currentPage}
+            handlePageChange={handlePageChange}
+            currentTasks={currentTasks} />
+        </PrivateRoute>}/>  
+
+      <Route path="/addtask" element={
+        <PrivateRoute>
+          <CreateTask 
+            handlesubmit={handlesubmit}
+            status={status}
+            currentPage={currentPage+1}/>
+        </PrivateRoute>
+            }/>
+ 
+      <Route path="/:id" element={
+        <PrivateRoute>
+          <EditTask
+            tasks={tasks}
+            taskById={taskById}
+            handleEditSubmit={handleEditSubmit}
+            editStatus={editStatus}
+            currentPage={currentPage+1}/>
+        </PrivateRoute>
+          }/>
+
     </Routes>
     </div>
   )  
