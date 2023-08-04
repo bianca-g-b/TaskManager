@@ -10,6 +10,7 @@ import Login from "../Login/Login.js";
 import PrivateRoute from "../../routes/PrivateRoute";
 import {AuthProvider } from "../../context/AuthProvider.js";
 import Homepage from "../Homepage/Homepage";
+import Navbar from "../Navbar/Navbar";
 import { useAuthContext } from "../../context/AuthProvider.js"
 
 
@@ -30,14 +31,16 @@ function App() {
   const tasksPerPage = 10;
   const location = useLocation();
   const navigate = useNavigate();
-  const user  = useAuthContext();
+  const {user}  = useAuthContext();
+
+  const user_email = user.email;
 
 
   // Function to get all tasks when page loads or when location changes
   useEffect(() => {
       async function fetchData() {
         try {
-          const response = await apiFunction.getTasks(user.user.id);
+          const response = await apiFunction.getTasks(user.id);
           setTasks(response);
           setShowTasks(true);
           console.log("Response:", response);
@@ -51,7 +54,7 @@ function App() {
     if (!fetchData && !console.error()) {
         setLoading(false);
   }
-  }, [location, user.user.id]);
+  }, [location, user.id]);
 
   // Use effect to update totalPages when tasks change
   useEffect(() => {
@@ -69,7 +72,7 @@ function App() {
         content: content.value,
         deadline: deadline.value,
         status: true,
-        user_id: user.user.id
+        user_id: user.id
     };
     try {
       const updatedTasks = await apiFunction.createTask(details); 
@@ -192,16 +195,17 @@ function handlePageChange(selectedPage) {
 // Use effect to update currentTasks and currentPage
 useEffect(()=>{
   async function updateCurrentTasks() {
-  const tasks = await apiFunction.getTasks(user.user.id);
+  const tasks = await apiFunction.getTasks(user.id);
   setCurrentTasks(tasks.slice(firstIndex, lastIndex))
   setCurrentPage(currentPage)
   }
   updateCurrentTasks();
-},[tasks, firstIndex, lastIndex, currentPage, user.user.id])
+},[tasks, firstIndex, lastIndex, currentPage, user.id])
 
 
   return (
     <div className="testing-app">
+    <Navbar user_email={user_email}/>
     <Modal 
         isModalOpen={isModalOpen} closeModal={closeModal}
         handleDelete={handleDelete} />

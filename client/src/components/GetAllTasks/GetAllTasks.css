@@ -1,15 +1,4 @@
 /*Table styling*/
-.create-task-large-button{
-    min-height: 100%;
-    min-width: 30%;
-}
-
-.loading-message,
-.no-tasks-message {
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
 table {
     border-collapse: separate; 
     border-spacing: 0 5px;
@@ -22,15 +11,6 @@ table {
     background-color: #4261FF;
 }
 
-.create-task-large-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100%;
-    min-width: 80%;
-    background-color: white;
-    border-radius: 15px;
-}
 .create-task-link {
     text-decoration: none;
     color: white;
@@ -287,4 +267,160 @@ th, td {
     padding-left: 1.7%;
     padding-top: 0.5%;
     padding-bottom: 0.5%;
+}
+/*Styles when no tasks are created yet*/
+.create-task-large-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    height: 100%;
+    min-width: 30%;
+    background-color: white;
+    border-radius: 15px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
+}
+
+.create-task-large-button{
+    min-height: 100%;
+    min-width: 50%;
+    background-color: #4261FF;
+    border: 1px solid #29292aa8;
+    color: white;
+    padding: 2%;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.create-task-large-button:hover {
+    background-image: linear-gradient(to right, #00c6ff 0%, #0072ff  51%, #00c6ff  100%);
+    margin: 10px;
+    padding: 3% 7%;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 210% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    background-position: right center; 
+}
+
+.no-tasks-header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70%;
+    min-width: 30%;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 15px;
+    padding-bottom: 10%;
+}
+
+.hide-title {
+    display: none;
+}
+
+.loading-message,
+.no-tasks-message {
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 2em;
+    color: #29292ade;
+    background: -webkit-linear-gradient(#0f1020, #525567);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;  
+}
+
+/*Media queries for containers and button */
+@media only screen and (max-width: 1900px) {
+    .create-task-large-container {
+        min-width: 40%;
+    }
+    .create-task-large-button {
+        min-width: 60%;
+    }
+    .no-tasks-header-container {
+        min-width: 50%;
+    }
+    .no-tasks-message {
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 1700px) {
+    .create-task-large-container {
+        min-width: 40%;
+    }
+    .create-task-large-button {
+        min-width: 60%;
+    }
+    .no-tasks-header-container {
+        min-width: 50%;
+    }
+    .no-tasks-message {
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    .create-task-large-container {
+        min-width: 55%;
+    }
+    .create-task-large-button {
+        min-width: 60%;
+    }
+    .no-tasks-header-container {
+        min-width: 50%;
+    }
+    .no-tasks-message {
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .create-task-large-container {
+        min-width: 65%;
+    }
+    .create-task-large-button {
+        min-width: 60%;
+    }
+    .no-tasks-header-container {
+        min-width: 50%;
+    }
+    .no-tasks-message {
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .create-task-large-container {
+        min-width: 75%;
+    }
+    .create-task-large-button {
+        min-width: 60%;
+    }
+    .no-tasks-header-container {
+        min-width: 50%;
+    }
+    .no-tasks-message {
+        font-size: 1.8em;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .create-task-large-button {
+        min-width: 70%;
+    }
+    .no-tasks-header-container {
+        min-width: 50%;
+    }
+    .no-tasks-message {
+        font-size: large;
+    }
 }
