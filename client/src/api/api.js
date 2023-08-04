@@ -1,7 +1,12 @@
 // Get request - to view all tasks
-export async function getTasks() {
+export async function getTasks(user_id_value) {
     try {
-        const response = await fetch(`/api/tasks`);
+        const response = await fetch(`/api/tasks`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${user_id_value}`,
+            },
+        });
             if (!response.ok) {
                 throw new Error ("Request failed!");
             }

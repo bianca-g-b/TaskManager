@@ -37,9 +37,10 @@ function App() {
   useEffect(() => {
       async function fetchData() {
         try {
-          const response = await apiFunction.getTasks()
+          const response = await apiFunction.getTasks(user.user.id);
           setTasks(response);
           setShowTasks(true);
+          console.log("Response:", response);
     } catch (error) {
         console.error("Error:", error);
     } finally {
@@ -50,12 +51,11 @@ function App() {
     if (!fetchData && !console.error()) {
         setLoading(false);
   }
-  }, [location]);
+  }, [location, user.user.id]);
 
   // Use effect to update totalPages when tasks change
   useEffect(() => {
     setTotalPages(Math.ceil(tasks.length/10));
-  // look at isFocused
   },[tasks])
 
  
@@ -100,11 +100,9 @@ function App() {
 
 // Function to save task details in state by id for edit task
 async function saveTaskByID(id) {
-  // const task = await apiFunction.getTaskByID(id); // review code, cosider deleting
   // map through tasks and find task by id
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].id === id) {
-      // console.log("task by id:", tasks[i])
       setTaskById(tasks[i]);
       setId(tasks[i].id)
       break;
@@ -143,7 +141,6 @@ async function handleEditSubmit(event) {
       setEditStatusTimer(timer);
 
       setTasks(updatedTasks);
-      // console.log(tasks);
     } else {
       console.error("Edit task failed:", updatedTasks);
     }
@@ -194,9 +191,13 @@ function handlePageChange(selectedPage) {
 
 // Use effect to update currentTasks and currentPage
 useEffect(()=>{
+  async function updateCurrentTasks() {
+  const tasks = await apiFunction.getTasks(user.user.id);
   setCurrentTasks(tasks.slice(firstIndex, lastIndex))
   setCurrentPage(currentPage)
-},[tasks, firstIndex, lastIndex, currentPage])
+  }
+  updateCurrentTasks();
+},[tasks, firstIndex, lastIndex, currentPage, user.user.id])
 
 
   return (

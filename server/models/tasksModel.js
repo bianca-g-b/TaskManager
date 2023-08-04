@@ -1,11 +1,12 @@
 import { supabase } from "../db/db.js";
 
-// GET all tasks from Supabase
-export async function getAllTasks() {
+// GET all tasks from Supabase by user_id
+export async function getAllTasks(user_id_value) {
     try {
         const {data, error} = await supabase
             .from('tasks') 
             .select('*')
+            .eq('user_id', user_id_value)
             .order('status', {ascending: false})
             .order('deadline', {ascending: true});
         

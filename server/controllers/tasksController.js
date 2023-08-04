@@ -3,8 +3,12 @@ import * as tasksModel from "../models/tasksModel.js";
 // GET - all tasks
 export async function getAllTasks(req, res) {
     try {
-        const tasks = await tasksModel.getAllTasks();
-        return res.json(tasks);
+        const user_id = req.headers.authorization.replace("Bearer ", "");    
+        if (!user_id) {
+            return res.status(401).json({error: "Unauthorized"});
+        }
+        const tasks = await tasksModel.getAllTasks(user_id);
+        return res.json(tasks);             
     } catch (error) {
         return res.json({error: error.message});
     }

@@ -18,15 +18,14 @@ function GetAllTasks({
     currentTasks,
 }) 
     {
-    const { user, handleLogout } = useAuthContext();
+    const {handleLogout } = useAuthContext();
 
     const handleButtonClick = (id) => {
         saveTaskByID(id);
         openModal();
     };
-
     const hasTasks = tasks.length > 0;
-
+    
     const handleLogoutClick = () => {
         handleLogout();
       };
@@ -60,11 +59,8 @@ function GetAllTasks({
                 <th className="task-actions">Actions</th>
             </tr>
             </thead>
-
-           
             <tbody>
             {currentTasks && currentTasks
-            .filter((task) => task.user_id === user.id)
             .map((task, index ) => (
                 <tr key={task.id} className="tasks" id={task.id}>
                     <td className="id unique-id">{index+1}</td>

@@ -10,14 +10,4 @@ if (!supabaseUrl || !supabaseKey) {
     throw new Error("Supabase connection details not found.")
 }
 
-// const options = {
-//     auth: {
-//         localStorage,
-//         autoRefreshToken: true,
-//         persistSession: true,
-//         detectSessionInUrl: true,
-//     },
-//   };
-// , {auth:{persistSession: false}}
-
 export const supabase = createClient(supabaseUrl, supabaseKey, {auth:{persistSession: false}});
