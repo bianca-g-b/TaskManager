@@ -10,6 +10,7 @@ import Login from "../Login/Login.js";
 import PrivateRoute from "../../routes/PrivateRoute";
 import {AuthProvider } from "../../context/AuthProvider.js";
 import Homepage from "../Homepage/Homepage";
+import { useAuthContext } from "../../context/AuthProvider.js"
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
   const tasksPerPage = 10;
   const location = useLocation();
   const navigate = useNavigate();
+  const user  = useAuthContext();
 
 
   // Function to get all tasks when page loads or when location changes
@@ -59,7 +61,6 @@ function App() {
  
   // Handle submit function for CreateTask component
   async function handlesubmit(event) {
-    // console.log(event);
     event.preventDefault();
     const { title, content, deadline } = event.target.elements;
     const details = {
@@ -67,7 +68,8 @@ function App() {
         title: title.value,
         content: content.value,
         deadline: deadline.value,
-        status: true
+        status: true,
+        user_id: user.user.id
     };
     try {
       const updatedTasks = await apiFunction.createTask(details); 
@@ -102,7 +104,7 @@ async function saveTaskByID(id) {
   // map through tasks and find task by id
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].id === id) {
-      console.log("task by id:", tasks[i])
+      // console.log("task by id:", tasks[i])
       setTaskById(tasks[i]);
       setId(tasks[i].id)
       break;
@@ -194,9 +196,6 @@ function handlePageChange(selectedPage) {
 useEffect(()=>{
   setCurrentTasks(tasks.slice(firstIndex, lastIndex))
   setCurrentPage(currentPage)
-  console.log("current page: ",currentPage);
-  console.log("first index: ",firstIndex);
-  console.log("last index: ",lastIndex);
 },[tasks, firstIndex, lastIndex, currentPage])
 
 

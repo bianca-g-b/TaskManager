@@ -18,7 +18,7 @@ function GetAllTasks({
     currentTasks,
 }) 
     {
-    const { handleLogout } = useAuthContext();
+    const { user, handleLogout } = useAuthContext();
 
     const handleButtonClick = (id) => {
         saveTaskByID(id);
@@ -33,14 +33,10 @@ function GetAllTasks({
  
     return (
         <div className = {`get-all-container ${hasTasks ? '' : 'create-task-large-container'}`}>
-            <NavLink to="/login" onClick={handleLogoutClick}
-            >Logout</NavLink>
-    
+            <NavLink to="/login" onClick={handleLogoutClick}>Logout</NavLink>
         <div className="header-container" >
         <h1 className="task-list-title">Task Lists</h1>
-        {/* <button className={`create-task-button ${hasTasks ? '' : 'create-task-large-button'}`}> */}
         <NavLink to="/addtask" className={`create-task-link create-task-button ${hasTasks ? '' : 'create-task-large-button'}` }>Add New Task</NavLink>
-        {/* </button> */}
         </div>
             {loading ? (
                 <div className="loading-container">
@@ -55,11 +51,11 @@ function GetAllTasks({
             <table className = "get-all-table">
             <thead className="tasks-titles">
             <tr >
+                <th className="unique-id">Task</th>
                 <th className= "task-title">Title</th>
                 <th className= "task-content">Content</th>
                 <th className="dates">Date Created</th>
                 <th className="dates">Deadline</th>
-                <th className="unique-id">Unique ID</th>
                 <th className="task-status">Status</th>
                 <th className="task-actions">Actions</th>
             </tr>
@@ -67,15 +63,15 @@ function GetAllTasks({
 
            
             <tbody>
-            {currentTasks && currentTasks.map((task) => (
-                
+            {currentTasks && currentTasks
+            .filter((task) => task.user_id === user.id)
+            .map((task, index ) => (
                 <tr key={task.id} className="tasks" id={task.id}>
-                    
+                    <td className="id unique-id">{index+1}</td>
                     <td className= "task-title" value={task.title}>{task.title}</td>
                     <td className= "task-content">{task.content}</td>
                     <td className= "task-date dates">{task.date.split("-").reverse().join("-")}</td>
-                    <td className= "task-deadline dates">{task.deadline.split("-").reverse().join("-")}</td>
-                    <td className="id unique-id">{task.id}</td>
+                    <td className= "task-deadline dates">{task.deadline.split("-").reverse().join("-")}</td>       
                     <td className="task-status"><p className={task.status ? `task-active` : `task-inactive`}>{task.status ? 'Active' :  'Inactive'}</p></td>
                     <td className="task-actions">
                     <div className="edit-task-button-container">
@@ -92,7 +88,6 @@ function GetAllTasks({
                 </tr>
             ))}
             </tbody>
-     
             </table>
         )
             ) :null}

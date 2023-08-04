@@ -6,7 +6,8 @@ import { useAuthContext } from "../../context/AuthProvider.js"
 
 
 function Login() {
-    const  user  = useAuthContext()
+    const  user  = useAuthContext();
+
     const [error, setError] = useState(null)
     const navigate = useNavigate();
 

@@ -12,7 +12,6 @@ function CreateTask({handlesubmit, status, currentPage, logout}) {
         </div>
             <h1 className="add-task-title">Add New Task</h1>
             <div className="add-task-form">
-            {/* <div className="add-task-input-fields"> */}
                 <div className="form-component">
                     <label htmlFor="title">Title of Task</label>
                     <input className="add-title-input"
@@ -42,7 +41,6 @@ function CreateTask({handlesubmit, status, currentPage, logout}) {
                         id="deadline"
                         required />
                         </div>
-            {/* </div> */}
             <div className="add-task-button-container">
             <button type="submit" className="add-task-button">{status}</button>
             </div>

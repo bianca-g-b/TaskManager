@@ -8,6 +8,7 @@ export async function getAllTasks() {
             .select('*')
             .order('status', {ascending: false})
             .order('deadline', {ascending: true});
+        
     if (error) {
         throw new Error(error.message);
     }
@@ -41,7 +42,7 @@ export async function createTask(details) {
         const {data,error} = await supabase
             .from('tasks')
             .insert([
-                {date: currentDate, title: details.title, content: details.content, deadline: details.deadline, status: true}
+                {date: currentDate, title: details.title, content: details.content, deadline: details.deadline, status: true, user_id: details.user_id}
             ])
             .select()
         if (error) {
