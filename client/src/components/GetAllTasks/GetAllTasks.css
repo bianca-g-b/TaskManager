@@ -21,6 +21,7 @@ table {
     background-color: white;
     padding: 3%;
     border-radius: 15px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
 }
 
 th {
@@ -59,6 +60,7 @@ th, td {
 .task-content {
     width: 120%;
     padding-right: 3%;
+    text-align: justify;
 }
 
 .task-status {
@@ -75,8 +77,6 @@ th, td {
     padding-left: 5.5%;
 
 }
-
-/*Title and button styling*/
 
 .get-all-container {
     display: flex;
@@ -115,7 +115,6 @@ th, td {
 
 .task-active {
     display: flex;
-    /* width: 80%; */
     background-color: #158723;
     color: white;
     border: none;
@@ -127,7 +126,6 @@ th, td {
 
 .task-inactive {
     display: flex;
-    /* width: 80%; */
     background-color: rgb(241, 99, 99);
     color: white;
     border: none;
@@ -268,23 +266,22 @@ th, td {
     padding-top: 0.5%;
     padding-bottom: 0.5%;
 }
+
 /*Styles when no tasks are created yet*/
 .create-task-large-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column-reverse;
-    height: 100%;
     min-width: 30%;
     background-color: white;
     border-radius: 15px;
     padding-top: 1%;
     padding-bottom: 1%;
-    box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
 }
 
-.create-task-large-button{
-    min-height: 100%;
+.create-task-large-button {
     min-width: 50%;
     background-color: #4261FF;
     border: 1px solid #29292aa8;
@@ -296,7 +293,7 @@ th, td {
 }
 
 .create-task-large-button:hover {
-    background-image: linear-gradient(to right, #00c6ff 0%, #0072ff  51%, #00c6ff  100%);
+    background-image: linear-gradient(to right, #00ff1e 0%, #158723  51%);
     margin: 10px;
     padding: 3% 7%;
     text-align: center;
@@ -312,9 +309,6 @@ th, td {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 70%;
-    min-width: 30%;
-    background-color: white;
     border: 1px solid white;
     border-radius: 15px;
     padding-bottom: 10%;

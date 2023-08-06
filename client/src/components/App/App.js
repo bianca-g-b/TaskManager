@@ -32,7 +32,6 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const {user}  = useAuthContext();
-
   const user_email = user.email;
 
 
@@ -110,8 +109,7 @@ async function saveTaskByID(id) {
       setId(tasks[i].id)
       break;
     }
-}
-  // console.log(task);
+  }
 }
 
 
@@ -205,7 +203,6 @@ useEffect(()=>{
 
   return (
     <div className="testing-app">
-    <Navbar user_email={user_email}/>
     <Modal 
         isModalOpen={isModalOpen} closeModal={closeModal}
         handleDelete={handleDelete} />
@@ -249,6 +246,7 @@ useEffect(()=>{
           }/>
 
     </Routes>
+    <Navbar user_email={user_email}/>
     </div>
   )  
 }

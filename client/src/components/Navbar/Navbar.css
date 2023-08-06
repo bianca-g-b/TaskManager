@@ -1,19 +1,18 @@
-/*Logout link*/
 .navbar {
     display: flex;
-    min-width: 100%;
     text-decoration: none;
     color: rgb(246, 246, 246);
-    background-color: #3654e9;
-    font-size: 2.5rem;
-    position: absolute;
+    background-color: #158723;
+    font-size: 1.5rem;
+    position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     padding-top: 0.8%;
     padding-bottom: 0.8%;
     align-self: flex-end;
-    justify-content: space-between; 
-    padding-right: 10%;
+    justify-content: space-between;
+    z-index: 1; 
 }
 
 .logout-link:hover {
@@ -29,7 +28,6 @@
     left: 0;
     margin-left: 2%;
     margin-bottom: 0;
-    font-size: 1.5rem;
 }
 
 /*Logout link*/
@@ -41,8 +39,46 @@
     top: 0;
     right: 0;
     align-self: self-end;
+    font-size: 2rem;
 }
 
 .user-icon {
    padding-right: 5%;
+}
+
+/*Media queries for font size*/
+@media (max-width: 768px) {
+    .navbar {
+        font-size: 1.2rem;
+    }
+    .logout-link {
+        font-size: 1.5rem;
+    }
+    .user-email {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        font-size: 1rem;
+    }
+    .logout-link {
+        font-size: 1.2rem;
+    }
+    .user-email {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 450px) {
+    .navbar {
+        font-size: 0.8rem;
+    }
+    .logout-link {
+        font-size: 1rem;
+    }
+    .user-email {
+        font-size: 0.8rem;
+    }
 }

@@ -1,0 +1,187 @@
+.c-jTXIoq-jjTuOt-gap-small:nth-child(1)  {
+    display: none !important;
+}
+
+.supabase-auth-ui_ui-divider {
+    display: none !important;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#root > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+/*Login form container*/
+#auth-sign-in, #auth-sign-up, #auth-forgot-password {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 3%;
+    width: fit-content !important;
+    height: fit-content !important;
+    margin: 0 auto !important;
+    align-self: center !important;
+    border-radius: 15px;
+    width: 17% !important;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+}
+
+
+.supabase-auth-ui_ui-container,
+.c-bpexlo 
+{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%!important;
+}
+
+.c-jTXIoq-bXHFxK-gap-large,
+.c-jTXIoq-bsgKCL-direction-vertical {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%!important;
+}
+
+/*Labels (email, your password*/
+.supabase-auth-ui_ui-label {
+    align-items: flex-start !important;
+    margin-bottom: 1% !important;
+}
+
+/*Email and password fields container*/
+.c-jTXIoq-bXHFxK-gap-large > div{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%!important;
+}
+
+/*Sign in button*/
+.c-egTDuJ {
+    color: white!important;
+    background-color: #158723 !important;
+    border-radius: 7px !important;
+    padding: 3% !important;
+    width: 100% !important;
+    font-weight: bold !important;
+    font-size: 1.2rem !important;
+}
+
+.c-jTXIoq-bsgKCL-direction-vertical {
+    display: flex !important;
+}
+
+.supabase-auth-ui_ui-input {
+    border-radius: 7px !important;
+    padding: 3% !important;
+    width: 100% !important;
+    border: 1px solid #e4e4e4 !important;
+}
+
+/*Media queries for #auth-sign-in width*/
+
+@media (max-width: 2000px) {
+    #auth-sign-in,
+    #auth-sign-up,
+    #auth-forgot-password
+     {
+        width: 21% !important;
+    }
+}
+
+@media (max-width: 19000px) {
+    #auth-sign-in,
+    #auth-sign-up,
+    #auth-forgot-password 
+    {
+        width: 23% !important;
+    }
+}
+
+@media (max-width: 1800px) {
+    #auth-sign-in,
+    #auth-sign-up,
+    #auth-forgot-password
+     {
+        width: 25% !important;
+    }
+}
+
+@media (max-width: 1700px) {
+    #auth-sign-in,
+    #auth-sign-up,
+    #auth-forgot-password
+     {
+        width: 30% !important;
+    }
+}
+
+@media (max-width: 1500px) {
+    #auth-sign-in,
+    #auth-sign-up,
+    #auth-forgot-password
+     {
+        width: 35% !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    #auth-sign-in,
+    #auth-sign-up,
+    #auth-forgot-password
+     {
+        width: 40% !important;
+    }
+}
+
+@media (max-width: 800px) {
+    #auth-sign-in,
+    #auth-sign-up,
+    #auth-forgot-password
+     {
+        width: 50% !important;
+    }
+}
+
+@media (max-width: 600px) {
+    #auth-sign-in,
+    #auth-sign-up,
+    #auth-forgot-password
+     {
+        width: 60% !important;
+    }
+}
+
+@media (max-width: 500px) {
+    #auth-sign-in,
+    #auth-sign-up,
+    #auth-forgot-password
+     {
+        width: 70% !important;
+    }
+}
+
+@media (max-width: 350px) {
+    #auth-sign-in,
+    #auth-sign-up,
+    #auth-forgot-password
+     {
+        width: 85% !important;
+    }
+}

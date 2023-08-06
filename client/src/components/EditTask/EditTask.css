@@ -23,6 +23,7 @@
     width: 70%;
     padding: 2%;
     border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
 }
 
 .form-component {
@@ -66,6 +67,8 @@
     margin-top: 1.5%;
     cursor: pointer;
     width: 15%;
+    font-size: medium;
+    letter-spacing: 1px;
 }
 
 /*Media queries for button*/

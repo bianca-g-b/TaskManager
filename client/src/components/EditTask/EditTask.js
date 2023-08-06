@@ -81,8 +81,8 @@ function EditTask({handleEditSubmit, taskById, editStatus, currentPage}) {
                         type="checkbox" id="status"
                     />
                 </div>
-                <div className="add-task-button-container">
-                    <button type="submit" className="add-task-button">{editStatus}</button>
+                <div className="edit-task-button-container">
+                    <button type="submit" className="edit-task-button">{editStatus}</button>
                 </div>
             </div>
         </form>

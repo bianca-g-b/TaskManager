@@ -3,7 +3,7 @@ import { NavLink} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import ReactPaginate from "react-paginate";
-// import { useAuthContext } from "../../context/AuthProvider.js";
+
 
 
 function GetAllTasks({
@@ -18,23 +18,18 @@ function GetAllTasks({
     currentTasks,
 }) 
     {
-    // const {handleLogout } = useAuthContext();
-
     const handleButtonClick = (id) => {
         saveTaskByID(id);
         openModal();
     };
     const hasTasks = tasks.length > 0;
 
-    // const handleLogoutClick = () => {
-    //     handleLogout();
-    //   };
+ 
  
     return (
         <div className = {`get-all-container ${hasTasks ? '' : 'create-task-large-container'}`}>
-            {/* <NavLink to="/login" onClick={handleLogoutClick}>Logout</NavLink> */}
         <div className={`header-container ${hasTasks ? '' : 'no-tasks-header-container'}`} >
-        <h1 className={`task-list-title ${hasTasks ? '' : 'hide-title'}`}>Task Lists</h1>
+        <h1 className={`task-list-title ${hasTasks ? '' : 'hide-title'}`}>Tasks List</h1>
         <NavLink to="/addtask" className={`create-task-link create-task-button ${hasTasks ? '' : 'create-task-large-button'}` }>Add New Task</NavLink>
         </div>
             {loading ? (
