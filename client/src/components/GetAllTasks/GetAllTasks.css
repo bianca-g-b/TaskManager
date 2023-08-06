@@ -22,7 +22,13 @@ table {
     padding: 3%;
     border-radius: 15px;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    /* background-color: #414142; */
+    /* color: white; */
 }
+
+/* .task-list-title {
+    color: white;
+} */
 
 th {
     border-bottom: 1px solid #414142;
@@ -95,6 +101,7 @@ th, td {
 
 .create-task-button {
         background-color: #4261FF;
+        /* background-color: #223282; */
         border-radius: 7px;
         border: none;
         color: white;
@@ -116,6 +123,7 @@ th, td {
 .task-active {
     display: flex;
     background-color: #158723;
+    /* background-color: #07370d; */
     color: white;
     border: none;
     border-radius: 25px;
@@ -127,6 +135,7 @@ th, td {
 .task-inactive {
     display: flex;
     background-color: rgb(241, 99, 99);
+    /* background-color: rgb(109, 43, 43); */
     color: white;
     border: none;
     border-radius: 5px;
@@ -250,6 +259,7 @@ th, td {
 
 .active-page {
     background-color: #4261FF;
+    /* background-color: #223282; */
     color: white;
     border: none;
     padding-right: 2.1%;

@@ -12,6 +12,8 @@ body, #root {
     height: 100%;
     width: 100%;
     background-color: rgb(241, 240, 240);
+    /* background-color: rgb(203, 212, 220); */
+    /* background-color: rgb(32, 34, 36); */
 }
 
 .testing-app {

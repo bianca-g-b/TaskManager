@@ -66,12 +66,20 @@ function GetAllTasks({
                     <td className="task-status"><p className={task.status ? `task-active` : `task-inactive`}>{task.status ? 'Active' :  'Inactive'}</p></td>
                     <td className="task-actions">
                     <div className="edit-task-button-container">
-                        <NavLink id={task.id} onClick={() => saveTaskByID(task.id)} to={`/${task.id}`} className="edit-task-link">
+                        <NavLink 
+                        id={`edit-task-${task.id}`} 
+                        onClick={() => saveTaskByID(task.id)} 
+                        to={`/${task.id}`}
+                        aria-label="Edit Task" 
+                        className="edit-task-link">
                         <FontAwesomeIcon icon={icon({name: 'pen-to-square'})} style={{color:"#5e81e8", fontSize:"1.5em"}}/>
                         </NavLink>
                         <button 
                         onClick={ () => handleButtonClick(task.id)}
-                        className="delete-icon">
+                        className="delete-icon"
+                        id={`delete-task--${task.id}`}
+                        aria-label="Delete Task"
+                        >
                         <FontAwesomeIcon icon={icon({name: 'trash'})} style={{color:"rgb(241, 99, 99)", fontSize:"1.5em"} } />
                         </button>
                         </div>
