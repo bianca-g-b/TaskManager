@@ -74,7 +74,7 @@ function App() {
         user_id: user.id
     };
     try {
-      const updatedTasks = await apiFunction.createTask(details); 
+      const updatedTasks = await apiFunction.createTask(details, user.id); 
       if (updatedTasks) {
         console.log("Task created successfully!");
         setStatus("Added!");
@@ -125,7 +125,7 @@ async function handleEditSubmit(event) {
   };
   const id = id2;
   try {
-    const updatedTasks = await apiFunction.editTask(id, details);
+    const updatedTasks = await apiFunction.editTask(id, details, user.id);
     if (updatedTasks) {
       console.log("Task edited successfully!");
       setEditStatus("Edited!");

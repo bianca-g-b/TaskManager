@@ -21,7 +21,7 @@ export async function getTasks(user_id_value) {
     }
 
 // Post request - to create a new task
-export async function createTask(details) {
+export async function createTask(details, user_id_value) {
     try {
         await fetch("api/tasks", {
             method: "POST",
@@ -30,7 +30,7 @@ export async function createTask(details) {
             },
             body: JSON.stringify(details)
         });
-        const updatedTasks = await getTasks();
+        const updatedTasks = await getTasks(user_id_value);
         return updatedTasks;
     } 
     catch (error) {
@@ -40,7 +40,7 @@ export async function createTask(details) {
 }
 
 // Patch request - to edit a task
-export async function editTask(id, details) {
+export async function editTask(id, details,user_id_value) {
     try {
         await fetch(`api/tasks/${id}`, {
             method: "PATCH",
@@ -49,7 +49,7 @@ export async function editTask(id, details) {
             },
             body: JSON.stringify(details)
         });
-        const updatedTasks = await getTasks();
+        const updatedTasks = await getTasks(user_id_value);
         return updatedTasks;
     }
     catch (error) {
