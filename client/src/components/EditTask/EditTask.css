@@ -1,11 +1,9 @@
 .edit-task-full-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    height: 100%;
-    width: 100%;
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    position:relative;
+    min-height: 100%;
 }
 
 .edit-task-title{
@@ -17,29 +15,37 @@
 .edit-task-form {
     display: flex;
     background-color: white;
-    justify-content:space-evenly;
+    border-radius: 15px;
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    height: 100%; 
+    width: 85%;
+    position: relative;
     flex-direction: column;
-    height: 45%;
-    width: 70%;
+    justify-content: space-evenly;
+    align-items: center;
     padding: 2%;
-    border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
 }
 
-.form-component {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 100%;
-    font-weight: 500;
-    letter-spacing: 1px;
-}
+.edit-task-title {
+    margin-left: 7%;
+    margin-bottom:5%;
+  }
+
 
 .edit-title-input {
     border-radius: 7px;
     border: solid 1px rgb(180, 180, 180);
     margin-top: 0.7%;
     padding: 1.5%;
+}
+
+.edit-title-input::placeholder {
+    font-size: 1em;
+    letter-spacing: 0.9px;
 }
 
 .edit-content-input {
@@ -50,6 +56,10 @@
     padding-top: 1.5%;
 }
 
+.edit-content-input::placeholder {
+    font-size: 0.9em;
+}
+
 .edit-deadline-input {
     border-radius: 7px;
     border: solid 1px rgb(180, 180, 180);
@@ -57,6 +67,27 @@
     padding: 1%;
     cursor:text;
 }
+
+.mark-as-checkbox {
+    display: flex;
+    align-self: start;
+    margin-bottom: 1%;
+    margin-left: 1%;
+}
+
+.edit-completed-input {
+    margin-left: 5px;
+  }
+
+.add-task-button-container {
+    display: flex;
+    align-self: start;
+    text-align: left;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  
 
 .edit-task-button {
     background-color: #4261FF;
@@ -77,33 +108,42 @@
         width: 20%;
         padding: 1.5%;
     }
+    .idit-task-full-form{
+        margin-top: 15%;
+    }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     .edit-task-button {
         width: 25%;
         padding: 2%;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .edit-task-button {
         width: 30%;
         padding: 2.5%;
     }
+    .edit-task-full-form{
+        margin-top: 17%;
+    }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 650px) {
     .edit-task-button {
         width: 40%;
         padding: 3%;
     }
 }
 
-@media (max-height: 650px) {
+@media (max-width: 500px) {
     .edit-task-form {
         height: 60%;
-        padding: 2.5%;
+        padding: 2%;
+    }
+    .edit-task-full-form{
+        margin-top: 20%;
     }
 }
 
@@ -122,8 +162,10 @@
 .back-to-all-tasks-container {
     display: flex;
     justify-content: flex-start;
-    width: 78%;
-    margin-bottom: 3%;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    position: relative;
+    margin-left: 4%;
 }
 
 .back-to-all-tasks-link {

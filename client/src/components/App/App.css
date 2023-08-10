@@ -3,25 +3,32 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-html {
-    height: 100%;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-body, #root {
-    margin: 0;
-    height: 100%;
-    width: 100%;
+
+html {
     background-color: rgb(241, 240, 240);
-    /* background-color: rgb(203, 212, 220); */
-    /* background-color: rgb(32, 34, 36); */
+    min-width: 100%;
+    min-height: 100%;
+}
+
+body, #root,
+.testing-app 
+ {
+    margin: 0;
+    max-width: 100vw;
+    height: 100vh;
 }
 
 .testing-app {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin: 0 ;
+    position: relative;
+     width: 100%;
+    overflow-x: hidden;
 }
 
 
@@ -31,4 +38,182 @@ body, #root {
     border: none;
     cursor: pointer;
 }
+
+/* Dark and light mode*/
+.app-dark {
+    background-color: rgb(35 39 47);
+    color: rgb(241, 240, 240);
+}
+
+.app-dark .get-all-container {
+    background-color: rgb(35 39 47);
+}
+.app-dark html {
+    background-color: rgb(35 39 47);
+}
+
+/* .app-dark .testing-app {
+    color: rgb(241, 240, 240);
+    background-color: rgb(35 39 47);
+    overflow-x:hidden;
+} */
+
+.app-dark .create-task-large-container {
+    background-color: rgb(22, 24, 30);
+    color: rgb(241, 240, 240);
+}
+
+/*Main page
+
+Table dark and light*/
+.app-dark .get-all-table {
+    background-color: rgb(22, 24, 30);
+    color: rgb(241, 240, 240);
+}
+
+.app-light .get-all-table {
+    background-color: white;
+    color: black;
+}
+
+/*Navbar*/
+.app-dark .navbar {
+    background-color: #07370d;
+}
+
+/*add task button*/
+.app-dark .create-task-button {
+    background-color: #223282;
+}
+
+/*active and inactive tasks status*/
+.app-dark .task-active {
+    background-color: #07370d;
+}
+
+.app-dark .task-inactive {
+    background-color: rgb(109, 43, 43);
+}
+/*No tasks ,essage and button*/
+.app-dark .create-task-large-button {
+    background-color: #223282;
+    border: 1px solid #3a4eaf;
+}
+.app-dark .create-task-large-button:hover {
+    background-image: linear-gradient(to right, #00ff1e 0%, #07370d 51%);
+    border: 1px solid #0b4612;
+}
+.app-dark .no-tasks-message {
+    color: rgb(241, 240, 240);
+}
+.app-dark .loading-message {
+    color: rgb(241, 240, 240);
+}
+
+.app-dark .active-page {
+    background-color: #223282;
+}
+
+/*Modal*/
+.app-dark .modal {
+    background: rgba(70, 70, 70, 0.705);
+}
+.app-dark .modal-div {
+    background-color: rgb(22, 24, 30);
+    color: rgb(241, 240, 240);
+}
+.app-dark .modal-button {
+    color: rgb(241, 240, 240);
+}
+.app-dark .modal-button:hover {
+    background-color: rgb(109, 43, 43);
+    color: rgb(241, 240, 240);
+    border: 1px solid rgb(141, 58, 58);
+}
+
+/*Add task form*/
+.app-dark .add-task-form {
+    background-color: rgb(22, 24, 30);
+    color: rgb(241, 240, 240);
+}
+.app-dark .add-task-button{
+    background-color: #223282;
+}
+.app-dark .add-title-input {
+    border: solid 1px rgb(43, 42, 42);
+    background-color: rgb(35 39 47);
+    color: rgb(241, 240, 240);
+}
+.app-dark .add-content-input {
+    border: solid 1px rgb(43, 42, 42);
+    background-color: rgb(35 39 47);
+    color: rgb(241, 240, 240);
+}
+.app-dark .add-deadline-input {
+    border: solid 1px rgb(43, 42, 42);
+    background-color: rgb(35 39 47);
+    color: rgb(241, 240, 240);
+}
+
+.app-dark .add-title-input::placeholder {
+    color: rgb(241, 240, 240);
+}
+
+.app-dark .add-content-input::placeholder {
+    color: rgb(241, 240, 240);
+}
+
+/*Edit task form*/
+.app-dark .edit-task-form {
+    background-color: rgb(22, 24, 30);
+    color: rgb(241, 240, 240);
+}
+.app-dark .edit-title-input {
+    border: solid 1px rgb(43, 42, 42);
+    background-color: rgb(35 39 47);
+    color: rgb(241, 240, 240);
+}
+.app-dark .edit-content-input {
+    border: solid 1px rgb(43, 42, 42);
+    background-color: rgb(35 39 47);
+    color: rgb(241, 240, 240);
+}
+.app-dark .edit-deadline-input {
+    border: solid 1px rgb(43, 42, 42);
+    background-color: rgb(35 39 47);
+    color: rgb(241, 240, 240);
+}
+
+.app-dark .edit-title-input::placeholder {
+    color: rgb(241, 240, 240);
+}
+
+.app-dark .edit-content-input::placeholder {
+    color: rgb(241, 240, 240);
+}
+
+.app-dark .edit-task-button {
+    background-color: #223282;
+}
+
+.app-dark .back-to-all-tasks-link {
+    color: rgb(241, 240, 240);
+}
+
+.delete-symbol {
+    color: rgb(241, 99, 99);
+}
+.app-dark .delete-symbol {
+    color: rgb(109, 43, 43);
+}
+
+.edit-symbol {
+    color: #5e81e8;
+}
+
+.app-dark .edit-symbol {
+    color: #223282;
+}
+
+
 

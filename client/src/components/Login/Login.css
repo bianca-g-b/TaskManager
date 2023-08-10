@@ -6,20 +6,20 @@
     display: none !important;
 }
 
-#root {
+/* #root {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
+} */
 
-#root > div {
+/* #root > div {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-}
+} */
 /*Login form container*/
 #auth-sign-in, #auth-sign-up, #auth-forgot-password {
     display: flex !important;

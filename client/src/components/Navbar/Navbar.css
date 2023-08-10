@@ -1,86 +1,144 @@
 .navbar {
+    box-sizing: border-box;
     display: flex;
     text-decoration: none;
     color: rgb(246, 246, 246);
-    background-color: #158723;
-    /* background-color: #07370d; */
-    font-size: 1.5rem;
+    background-color: #15872244;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    padding-top: 0.8%;
-    padding-bottom: 0.8%;
+    padding-top: 0.6%;
+    padding-bottom: 0.6%;
     align-self: flex-end;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    width: 97%;
     justify-content: space-between;
-    z-index: 1; 
+    font-size: 1.5rem;
+    box-sizing: border-box;
 }
 
 .logout-link:hover {
-    color: #d4d6e2;
+    color: rgb(246, 246, 246);
 
-}
-.user-email {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    text-align: left;
-    top: 0;
-    left: 0;
-    margin-left: 2%;
-    margin-bottom: 0;
 }
 
 /*Logout link*/
 .logout-link {
-    display: flex;
     text-decoration: none;
     color: rgb(246, 246, 246);
-    margin-right: 2%;
-    top: 0;
-    right: 0;
-    align-self: self-end;
-    font-size: 2rem;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.771);
+    margin-left: 5%;
 }
 
-.user-icon {
-   padding-right: 5%;
+.menu-div-1 {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    align-self:flex-end;
+    
 }
+.user-icon {
+    margin-left: 5%;
+}
+
+.user-email {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+
+.menu-div-2 {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    width: 30%;
+}
+
+.app-name-link {
+    margin:0;
+    margin-bottom: 1%;
+}
+.slogan {
+    margin:0;
+}
+
+.menu-div-3 {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+/*Dark and light theme buttons*/
+.theme-button-light, .theme-button-dark {
+    display: flex;
+    margin-right: 15%;  
+    border-radius: 100px;
+    border: none;
+}
+
+.theme-button-light {
+    background-color: rgb(241, 240, 240);
+    color: rgb(94, 103, 121);
+    padding-top: 8%;
+    padding-bottom: 8%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.theme-button-dark {
+    background-color:rgb(94, 103, 121) ;
+    color: rgb(241, 240, 240);
+    padding: 8%;
+}
+
+.theme-button-dark:hover {
+    cursor: pointer;
+    background-color: yellow;
+    color: darkred;
+}
+
+.theme-button-light:hover {
+    cursor: pointer;
+    background-color: darkslateblue;
+    color: silver;
+}
+
+
 
 /*Media queries for font size*/
-@media (max-width: 768px) {
-    .navbar {
+@media (max-width: 1100px) {
+    .menu {
         font-size: 1.2rem;
     }
-    .logout-link {
-        font-size: 1.5rem;
-    }
-    .user-email {
-        font-size: 1.2rem;
-    }
-}
+} 
 
-@media (max-width: 600px) {
-    .navbar {
-        font-size: 1rem;
-    }
-    .logout-link {
-        font-size: 1.2rem;
-    }
-    .user-email {
+@media (max-width: 800px) {
+    .menu {
         font-size: 1rem;
     }
 }
 
-@media (max-width: 450px) {
-    .navbar {
+@media (max-width: 550px) {
+    .menu {
         font-size: 0.8rem;
     }
-    .logout-link {
-        font-size: 1rem;
-    }
-    .user-email {
-        font-size: 0.8rem;
+}
+
+@media (max-width: 400px) {
+    .menu {
+        font-size: 0.6rem;
     }
 }

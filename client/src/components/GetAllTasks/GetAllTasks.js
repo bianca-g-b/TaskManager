@@ -72,7 +72,7 @@ function GetAllTasks({
                         to={`/${task.id}`}
                         aria-label="Edit Task" 
                         className="edit-task-link">
-                        <FontAwesomeIcon icon={icon({name: 'pen-to-square'})} style={{color:"#5e81e8", fontSize:"1.5em"}}/>
+                        <FontAwesomeIcon className="edit-symbol" icon={icon({name: 'pen-to-square'})} style={{fontSize:"1.5em"}}/>
                         </NavLink>
                         <button 
                         onClick={ () => handleButtonClick(task.id)}
@@ -80,7 +80,7 @@ function GetAllTasks({
                         id={`delete-task--${task.id}`}
                         aria-label="Delete Task"
                         >
-                        <FontAwesomeIcon icon={icon({name: 'trash'})} style={{color:"rgb(241, 99, 99)", fontSize:"1.5em"} } />
+                        <FontAwesomeIcon className="delete-symbol" icon={icon({name: 'trash'})} style={{ fontSize:"1.5em"} } />
                         </button>
                         </div>
                     </td>

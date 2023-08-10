@@ -22,13 +22,8 @@ table {
     padding: 3%;
     border-radius: 15px;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
-    /* background-color: #414142; */
-    /* color: white; */
-}
 
-/* .task-list-title {
-    color: white;
-} */
+}
 
 th {
     border-bottom: 1px solid #414142;
@@ -89,6 +84,7 @@ th, td {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgb(241, 240, 240);
 }
 
 .header-container {
@@ -123,7 +119,6 @@ th, td {
 .task-active {
     display: flex;
     background-color: #158723;
-    /* background-color: #07370d; */
     color: white;
     border: none;
     border-radius: 25px;
@@ -135,7 +130,6 @@ th, td {
 .task-inactive {
     display: flex;
     background-color: rgb(241, 99, 99);
-    /* background-color: rgb(109, 43, 43); */
     color: white;
     border: none;
     border-radius: 5px;
@@ -259,7 +253,6 @@ th, td {
 
 .active-page {
     background-color: #4261FF;
-    /* background-color: #223282; */
     color: white;
     border: none;
     padding-right: 2.1%;
@@ -311,7 +304,6 @@ th, td {
     transition: 0.5s;
     background-size: 210% auto;
     color: white;            
-    box-shadow: 0 0 20px #eee;
     background-position: right center; 
 }
 
@@ -319,7 +311,6 @@ th, td {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid white;
     border-radius: 15px;
     padding-bottom: 10%;
 }
@@ -334,10 +325,6 @@ th, td {
     letter-spacing: 1px;
     font-size: 2em;
     color: #29292ade;
-    background: -webkit-linear-gradient(#0f1020, #525567);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
     text-align: center;  
 }
 
@@ -428,3 +415,46 @@ th, td {
         font-size: large;
     }
 }
+
+/*Media queries for get-all-container height*/
+@media only screen and (max-height: 1100px) {
+    .get-all-container {
+        margin-top: 10%;
+    }
+}
+@media only screen and (max-height: 950px) {
+    .get-all-container {
+        margin-top: 20%;
+    }
+}
+@media only screen and (max-height: 850px) {
+    .get-all-container {
+        margin-top: 35%;
+        margin-bottom: 10%;
+    }
+}
+
+@media only screen and (max-height: 750px) {
+    .get-all-container {
+        margin-top: 45%;
+    }
+}
+
+@media only screen and (max-height: 600px) {
+    .get-all-container {
+        margin-top: 55%;
+    }
+}
+
+@media only screen and (max-height: 550px) {
+    .get-all-container {
+        margin-top: 70%;
+    }
+}
+
+@media only screen and (max-height: 400px) {
+    .get-all-container {
+        margin-top: 80%;
+    }
+}
+

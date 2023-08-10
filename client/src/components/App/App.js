@@ -11,7 +11,9 @@ import PrivateRoute from "../../routes/PrivateRoute";
 import {AuthProvider } from "../../context/AuthProvider.js";
 import Homepage from "../Homepage/Homepage";
 import Navbar from "../Navbar/Navbar";
-import { useAuthContext } from "../../context/AuthProvider.js"
+import { useAuthContext } from "../../context/AuthProvider.js";
+import { useThemeContext } from "../../context/Theme";
+import { ThemeProvider } from "../../context/Theme";
 
 
 function App() {
@@ -33,6 +35,7 @@ function App() {
   const navigate = useNavigate();
   const {user}  = useAuthContext();
   const user_email = user.email;
+  const {theme, isDarkMode, handleTheme} = useThemeContext();
 
 
   // Function to get all tasks when page loads or when location changes
@@ -202,13 +205,14 @@ useEffect(()=>{
 
 
   return (
-    <div className="testing-app">
+    <ThemeProvider>
+    <div className={isDarkMode ? `testing-app app-dark` : `testing-app app-light`}>
     <Modal 
         isModalOpen={isModalOpen} closeModal={closeModal}
         handleDelete={handleDelete} />
     <Routes>
     <Route path="/homepage/*" element={<AuthProvider><Homepage /></AuthProvider>} />
-    <Route path="/login/*" element={<AuthProvider><Login /></AuthProvider>}>
+    <Route path="/login/*" element={<ThemeProvider><AuthProvider><Login /></AuthProvider></ThemeProvider>}>
       </Route>
 
       <Route path={`/`} element={
@@ -246,8 +250,13 @@ useEffect(()=>{
           }/>
 
     </Routes>
-    <Navbar user_email={user_email}/>
+    <Navbar 
+      user_email={user_email}
+      handleTheme={handleTheme}
+      theme={theme}
+      />
     </div>
+    </ThemeProvider>
   )  
 }
 
