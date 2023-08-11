@@ -16,6 +16,11 @@ html {
     min-height: 100%;
 }
 
+.html-dark {
+    background-color: rgb(35 39 47);
+}
+
+
 body, #root,
 .testing-app 
  {
@@ -27,8 +32,9 @@ body, #root,
 .testing-app {
     margin: 0 ;
     position: relative;
-     width: 100%;
+    width: 100%;
     overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 
@@ -52,14 +58,13 @@ body, #root,
     background-color: rgb(35 39 47);
 }
 
-/* .app-dark .testing-app {
+.app-dark .testing-app {
     color: rgb(241, 240, 240);
     background-color: rgb(35 39 47);
-    overflow-x:hidden;
-} */
+}
 
 .app-dark .create-task-large-container {
-    background-color: rgb(22, 24, 30);
+    /* background-color: rgb(22, 24, 30); */
     color: rgb(241, 240, 240);
 }
 

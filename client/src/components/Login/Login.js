@@ -31,9 +31,7 @@ function Login() {
 
     return (
         <div className="login-container">
-            {/* <div className="login-form"> */}
                 <Auth supabaseClient={supabase}  />
-            {/* </div> */}
         </div>
     )
 }

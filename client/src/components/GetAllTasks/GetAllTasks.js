@@ -51,7 +51,7 @@ function GetAllTasks({
                 <th className="dates">Date Created</th>
                 <th className="dates">Deadline</th>
                 <th className="task-status">Status</th>
-                <th className="task-actions">Actions</th>
+                <th className="task-actions action-title">Actions</th>
             </tr>
             </thead>
             <tbody>

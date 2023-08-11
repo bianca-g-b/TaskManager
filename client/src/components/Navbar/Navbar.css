@@ -3,7 +3,7 @@
     display: flex;
     text-decoration: none;
     color: rgb(246, 246, 246);
-    background-color: #15872244;
+    background-color: #158722;
     position: fixed;
     top: 0;
     left: 0;
@@ -25,45 +25,68 @@
     box-sizing: border-box;
 }
 
-.logout-link:hover {
-    color: rgb(246, 246, 246);
-
-}
 
 /*Logout link*/
-.logout-link {
+.app-dark .logout-link {
+    display: flex;
     text-decoration: none;
-    color: rgb(246, 246, 246);
+    color: rgb(241, 240, 240);
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.771);
-    margin-left: 5%;
+    padding: 3%;
 }
 
-.menu-div-1 {
+.app-light .logout-link {
+    display: flex;
+    text-decoration: none;
+    color: rgb(35 39 47);
+    padding: 3%;
+}
+
+.logout-link:hover {
+    background-color: rgba(215, 215, 215, 0.417);
+}
+.app-dark .logout-link:hover {
+    background-color: rgba(79, 81, 86, 0.443);
+}
+/*User email and icon*/
+.dropdown-username {
     display: flex;
     box-sizing: border-box;
     flex-direction: row;
     align-items: baseline;
     justify-content: space-between;
     align-self:flex-end;
-    
+    border-bottom: 0.5px solid rgb(246, 246, 246);   
 }
+
+.app-light .dropdown-username {
+    border-bottom: 1px solid rgb(35 39 47);
+}
+
 .user-icon {
-    margin-left: 5%;
+    margin-right: 4%;
 }
+
+/* .app-light .user-email {
+    color: rgb(35 39 47);
+}
+.app-light .user-icon {
+    color: rgb(35 39 47);
+} */
 
 .user-email {
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: flex-end;
+    padding-bottom: 3%;
+    margin-bottom: 1%;
 }
 
 
-.menu-div-2 {
+.app-name-div {
     display: flex;
     flex-direction: column;
-    align-items:center;
-    width: 30%;
+    align-items:flex-start;
 }
 
 .app-name-link {
@@ -84,39 +107,105 @@
 /*Dark and light theme buttons*/
 .theme-button-light, .theme-button-dark {
     display: flex;
-    margin-right: 15%;  
-    border-radius: 100px;
     border: none;
+    padding: 3%;  
 }
 
 .theme-button-light {
-    background-color: rgb(241, 240, 240);
-    color: rgb(94, 103, 121);
-    padding-top: 8%;
-    padding-bottom: 8%;
-    padding-left: 10%;
-    padding-right: 10%;
+    background-color: none;
+    font-size:1.4rem;
+    padding: 3%;
+    color: rgb(35 39 47);
+    width: 100%;
 }
 
 .theme-button-dark {
-    background-color:rgb(94, 103, 121) ;
+    background-color: rgb(35 39 47);
     color: rgb(241, 240, 240);
-    padding: 8%;
+    padding: 3%;
+    font-size: 1.4rem;
+    width: 100%;
 }
 
 .theme-button-dark:hover {
     cursor: pointer;
-    background-color: yellow;
-    color: darkred;
+    background-color: rgba(79, 81, 86, 0.443);
 }
 
 .theme-button-light:hover {
     cursor: pointer;
-    background-color: darkslateblue;
-    color: silver;
+    background-color: rgba(215, 215, 215, 0.417);
+}
+
+#menu-button {
+    background-color: rgb(35 39 47);
+    color: rgb(241, 240, 240);
+    border-radius: 50px;
+    border: none;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    padding-top: 0.3%;
+    padding-bottom: 0.3%;
+    float: right;
+    cursor: pointer;
+}
+
+.menu-icon {
+    font-size: 2rem; 
+}
+
+.app-light #menu-button {
+    background-color: rgb(241, 240, 240);
+    color: rgb(35 39 47);
+    border: 1px solid rgba(38, 37, 37, 0.478);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.771);
+}
+
+.app-dark #menu-button {
+    border: 1px solid rgb(62, 62, 62);
+}
+
+.app-light #menu-button:hover {
+    background-color: rgb(215, 215, 215);
+}
+
+.app-dark #menu-button:hover {
+    background-color: rgb(62, 62, 67);
+}
+
+.dropdown-items {
+    display: none;
+    position: absolute; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.771);
+    z-index: 1;
+    border-radius: 5px;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    padding-left: 1%;
+    padding-right: 1%;
+    top: 83%;
+    right: 1%;
+}
+
+.app-dark .dropdown-items {
+    background-color: rgb(35 39 47);
+    color: rgb(241, 240, 240);
+}
+
+.app-light .dropdown-items {
+    background-color: rgb(241, 240, 240);
+    color: rgb(35 39 47);
 }
 
 
+.show-menu {
+    display: block;
+}
+
+.theme-label {
+    display: flex;
+    flex-direction: row;
+}
 
 /*Media queries for font size*/
 @media (max-width: 1100px) {
@@ -129,6 +218,10 @@
     .menu {
         font-size: 1rem;
     }
+    .theme-button-dark,
+    .theme-button-light {
+        font-size: small;
+    }
 }
 
 @media (max-width: 550px) {
@@ -140,5 +233,9 @@
 @media (max-width: 400px) {
     .menu {
         font-size: 0.6rem;
+    }
+    .theme-button-dark,
+    .theme-button-light {
+        font-size: smaller;
     }
 }

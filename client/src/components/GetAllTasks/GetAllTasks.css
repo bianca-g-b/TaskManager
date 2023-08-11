@@ -73,13 +73,17 @@ th, td {
 
 .task-actions {
     width: 50%;
-    justify-content: center;
-    text-align: center;
     padding-left: 5.5%;
+}
 
+.action-title {
+    text-align: center;
+    justify-content: center;
+    padding-left: 4%;
 }
 
 .get-all-container {
+    margin-top: 15%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -97,7 +101,6 @@ th, td {
 
 .create-task-button {
         background-color: #4261FF;
-        /* background-color: #223282; */
         border-radius: 7px;
         border: none;
         color: white;
@@ -137,103 +140,6 @@ th, td {
     align-items: center;
     justify-content: center;
     padding: 2% 0 2% 0;
-}
-
-/*Media queries*/
-@media screen and (max-width: 1400px) {
-    .task-status {
-        width: 60%;
-    }
-}
-
-@media screen and (max-width: 1300px) {
-    .create-task-button {
-        width: 12%;
-    }
-    .task-status {
-        width: 60%;
-    }
-}
-
-@media only screen and (max-width:1000px) {
-    .task-status,
-    .task-actions,
-    .unique-id,
-    .dates,
-    .task-title,
-    .task-content
-    {
-        font-size: 0.9em;
-        width: 100%;
-    }
-    .create-task-button {
-        width: 15%;
-    }
-}
-
-@media only screen and (max-width: 800px) {
-    .get-all-table {
-        font-size: 0.9em;
-    }
-    .task-title,
-    .task-content,
-    .task-status,
-    .task-actions,
-    .unique-id,
-    .dates,
-    .create-task-button,
-    .edit-task-button,
-    .header-container,
-    .get-all-container
-    {
-        font-size: 0.9em;
-    }
-    .get-all-table {
-        width: 100%;
-    }
-    .create-task-button {
-        width: 17%;
-    }
-    .header-container {
-        width: 95%;
-    }
-    .get-all-container {
-        width: 95%;
-    }
-    .edit-task-link {
-        font-size: 1.2em;
-    }
-    .delete-icon {
-        font-size: 1.2em;
-    }
-}
-
-@media only screen and (max-width:600px) {
-    .task-status,
-    .task-actions,
-    .unique-id,
-    .dates,
-    .task-title,
-    .task-content {
-        font-size: 0.7em;
-        width: 100%;
-    }
-    .create-task-button {
-        width: 30%;
-    }
-}
-
-@media only screen and (max-width:450px) {
-    .task-status,
-    .task-actions,
-    .unique-id,
-    .dates,
-    .task-title,
-    .task-content
-    {
-        font-size: 0.55em;
-        width: 100%;
-    }
 }
 
 /*ReactPaginate styling*/
@@ -277,28 +183,27 @@ th, td {
     align-items: center;
     flex-direction: column-reverse;
     min-width: 30%;
-    background-color: white;
     border-radius: 15px;
     padding-top: 1%;
     padding-bottom: 1%;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    margin-top: 20%; 
 }
 
 .create-task-large-button {
-    min-width: 50%;
+    width: 20vw;
     background-color: #4261FF;
     border: 1px solid #29292aa8;
     color: white;
-    padding: 2%;
-    font-size: 1.2em;
+    padding: 1.5%;
+    font-size: 1em;
     font-weight: bold;
     text-transform: uppercase;
 }
 
 .create-task-large-button:hover {
     background-image: linear-gradient(to right, #00ff1e 0%, #158723  51%);
-    margin: 10px;
-    padding: 3% 7%;
+    /* margin: 10px; */
+    /* padding: 2% ; */
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
@@ -311,8 +216,6 @@ th, td {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 15px;
-    padding-bottom: 10%;
 }
 
 .hide-title {
@@ -328,13 +231,121 @@ th, td {
     text-align: center;  
 }
 
+
+/*Media queries*/
+@media screen and (max-width: 1400px) {
+    .task-status {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .create-task-button {
+        width: 12%;
+    }
+    .task-status {
+        width: 60%;
+    }
+    .get-all-table {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .get-all-table {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width:1000px) {
+    .task-status,
+    .task-actions,
+    .unique-id,
+    .dates,
+    .task-title,
+    .task-content
+    {
+        font-size: 0.9em;
+    }
+    .create-task-button {
+        width: 15%;
+    }
+    .get-all-table {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .get-all-table {
+        font-size: 0.9em;
+    }
+    .task-title,
+    .task-content,
+    .task-status,
+    .task-actions,
+    .unique-id,
+    .dates,
+    .create-task-button,
+    .edit-task-button,
+    .header-container,
+    .get-all-container
+    {
+        font-size: 0.9em;
+    }
+    .get-all-table {
+        width: 98%;
+    }
+    .create-task-button {
+        width: 17%;
+    }
+    .header-container {
+        width: 95%;
+    }
+    .get-all-container {
+        width: 100%;
+        
+    }
+    .edit-task-link {
+        font-size: 1.2em;
+    }
+    .delete-icon {
+        font-size: 1.2em;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .task-status,
+    .task-actions,
+    .unique-id,
+    .dates,
+    .task-title,
+    .task-content {
+        font-size: 0.7em;
+        width: 100%;
+    }
+    .create-task-button {
+        width: 30%;
+    }
+}
+
+@media only screen and (max-width:450px) {
+    .task-status,
+    .task-actions,
+    .unique-id,
+    .dates,
+    .task-title,
+    .task-content
+    {
+        font-size: 0.55em;
+        width: 100%;
+    }
+}
+
+
 /*Media queries for containers and button */
 @media only screen and (max-width: 1900px) {
     .create-task-large-container {
         min-width: 40%;
-    }
-    .create-task-large-button {
-        min-width: 60%;
     }
     .no-tasks-header-container {
         min-width: 50%;
@@ -349,7 +360,7 @@ th, td {
         min-width: 40%;
     }
     .create-task-large-button {
-        min-width: 60%;
+        min-width: 25%;
     }
     .no-tasks-header-container {
         min-width: 50%;
@@ -364,7 +375,7 @@ th, td {
         min-width: 55%;
     }
     .create-task-large-button {
-        min-width: 60%;
+        min-width: 30%;
     }
     .no-tasks-header-container {
         min-width: 50%;
@@ -379,7 +390,7 @@ th, td {
         min-width: 65%;
     }
     .create-task-large-button {
-        min-width: 60%;
+        min-width: 40%;
     }
     .no-tasks-header-container {
         min-width: 50%;
@@ -389,12 +400,12 @@ th, td {
     }
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1050px) {
     .create-task-large-container {
-        min-width: 75%;
+        min-width: 85%;
     }
     .create-task-large-button {
-        min-width: 60%;
+        min-width: 50%;
     }
     .no-tasks-header-container {
         min-width: 50%;
@@ -415,46 +426,3 @@ th, td {
         font-size: large;
     }
 }
-
-/*Media queries for get-all-container height*/
-@media only screen and (max-height: 1100px) {
-    .get-all-container {
-        margin-top: 10%;
-    }
-}
-@media only screen and (max-height: 950px) {
-    .get-all-container {
-        margin-top: 20%;
-    }
-}
-@media only screen and (max-height: 850px) {
-    .get-all-container {
-        margin-top: 35%;
-        margin-bottom: 10%;
-    }
-}
-
-@media only screen and (max-height: 750px) {
-    .get-all-container {
-        margin-top: 45%;
-    }
-}
-
-@media only screen and (max-height: 600px) {
-    .get-all-container {
-        margin-top: 55%;
-    }
-}
-
-@media only screen and (max-height: 550px) {
-    .get-all-container {
-        margin-top: 70%;
-    }
-}
-
-@media only screen and (max-height: 400px) {
-    .get-all-container {
-        margin-top: 80%;
-    }
-}
-
