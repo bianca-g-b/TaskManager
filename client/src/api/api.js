@@ -1,7 +1,9 @@
+const baseUrl = process.env.REACT_APP_BASE_URL;
+
 // Get request - to view all tasks
 export async function getTasks(user_id_value) {
     try {
-        const response = await fetch(`/api/tasks`, {
+        const response = await fetch(`${baseUrl}/api/tasks`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${user_id_value}`,
@@ -12,6 +14,7 @@ export async function getTasks(user_id_value) {
             }
             else {
         const data = await response.json();
+        console.log(baseUrl);
             return data
         }}
         catch (error) {
@@ -23,7 +26,7 @@ export async function getTasks(user_id_value) {
 // Post request - to create a new task
 export async function createTask(details, user_id_value) {
     try {
-        await fetch("api/tasks", {
+        await fetch(`${baseUrl}/api/tasks`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -42,7 +45,7 @@ export async function createTask(details, user_id_value) {
 // Patch request - to edit a task
 export async function editTask(id, details,user_id_value) {
     try {
-        await fetch(`api/tasks/${id}`, {
+        await fetch(`${baseUrl}/api/tasks/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -61,7 +64,7 @@ export async function editTask(id, details,user_id_value) {
 // Get request - to get a task by id
 export async function getTaskByID(id) {
     try {
-        const response = await fetch(`api/tasks/${id}`);
+        const response = await fetch(`${baseUrl}/api/tasks/${id}`);
         if (!response.ok) {
             throw new Error ("Request failed!");
         }
@@ -76,7 +79,7 @@ export async function getTaskByID(id) {
 // Delete request - to delete a task by id
 export async function deleteTask(id) {
     try {
-        const response = await fetch(`api/tasks/${id}`, {
+        const response = await fetch(`${baseUrl}/api/tasks/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"

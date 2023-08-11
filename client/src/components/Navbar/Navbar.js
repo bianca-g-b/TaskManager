@@ -22,13 +22,16 @@ function Navbar({user_email,handleTheme, theme}) {
       <div className='menu'>
 
       <div className="app-name-div">
-        <h4 className="app-name-link" to="/">Task Manager</h4>
+        <p className="app-name-link" to="/">Task Manager</p>
         <p className="slogan">Slogan</p>
       </div>
 
 
      {/* Menu  */}
-    <button id="menu-button" onClick={handleMenuClick}>
+    <button id="menu-button" 
+      onClick={handleMenuClick}
+      aria-label="Menu button"
+      >
       <FontAwesomeIcon className="menu-icon" icon={icon({name: 'user'})}/>
     </button>
 
@@ -41,7 +44,9 @@ function Navbar({user_email,handleTheme, theme}) {
       </div>
 
       <button className={`theme-button-${theme === `dark` ? `dark` : `light`}`}
-          onClick={handleTheme}>{theme === `dark` ? "Change to light theme" : "Change to dark theme"}
+          onClick={handleTheme}
+          aria-label="Theme button"
+          >{theme === `dark` ? "Change to light theme" : "Change to dark theme"}
       </button>
 
         <NavLink className="logout-link" to="/login" onClick={handleLogoutClick}>Logout</NavLink>
