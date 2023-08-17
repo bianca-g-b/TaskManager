@@ -16,6 +16,7 @@ function GetAllTasks({
     currentPage,
     handlePageChange,
     currentTasks,
+    selectedPage,
 }) 
     {
     const handleButtonClick = (id) => {
@@ -58,7 +59,7 @@ function GetAllTasks({
             {currentTasks && currentTasks
             .map((task, index ) => (
                 <tr key={task.id} className="tasks" id={task.id}>
-                    <td className="id unique-id">{index+1}</td>
+                    <td className="id unique-id">{currentPage && currentPage > 0 ? (currentPage * 10 )+ index+1 : index+1 }</td>
                     <td className= "task-title" value={task.title}>{task.title}</td>
                     <td className= "task-content">{task.content}</td>
                     <td className= "task-date dates">{task.date.split("-").reverse().join("-")}</td>

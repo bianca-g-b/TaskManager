@@ -89,7 +89,8 @@ function App() {
         // Set editStatusTimer to clear editStatus after 2 seconds
         const timer = setTimeout(() => {
           setStatus("Create Task");
-        }, 2000);
+          navigate(`/`)
+        }, 1000);
         // Set editStatusTimer
         setCreateTaskTimer(timer);
 
@@ -140,7 +141,8 @@ async function handleEditSubmit(event) {
       // Set editStatusTimer to clear editStatus after 2 seconds
       const timer = setTimeout(() => {
           setEditStatus("Edit Task");
-      }, 2000);
+          navigate(`/`)
+      }, 1000);
       // Set editStatusTimer
       setEditStatusTimer(timer);
 
