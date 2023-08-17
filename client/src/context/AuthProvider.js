@@ -49,7 +49,7 @@ export function AuthProvider({children}) {
         return (
             <Routes>
                 <Route path="/login" element={<Auth supabaseClient={supabase} />} />
-                <Route path = "/homepage" element={<Homepage />} />
+                <Route path = "/" element={<Homepage />} />
             </Routes>
         )
     } else {

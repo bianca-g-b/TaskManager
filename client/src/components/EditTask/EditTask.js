@@ -35,7 +35,7 @@ function EditTask({handleEditSubmit, taskById, editStatus, currentPage}) {
     return(  
         <form onSubmit={handleEditSubmit} className="edit-task-full-form" >
         <div className="back-to-all-tasks-container">
-            <NavLink to={`/?page=${currentPage}`} className="back-to-all-tasks-link">&#8701; Back to Tasks</NavLink>
+            <NavLink to={`/tasks/?page=${currentPage}`} className="back-to-all-tasks-link">&#8701; Back to Tasks</NavLink>
         </div>
             <h1 className="edit-task-title">Edit Task</h1>
             <div className = "edit-task-form">

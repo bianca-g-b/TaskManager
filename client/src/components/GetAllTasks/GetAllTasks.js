@@ -16,7 +16,6 @@ function GetAllTasks({
     currentPage,
     handlePageChange,
     currentTasks,
-    selectedPage,
 }) 
     {
     const handleButtonClick = (id) => {
@@ -31,7 +30,7 @@ function GetAllTasks({
         <div className = {`get-all-container ${hasTasks ? '' : 'create-task-large-container'}`}>
         <div className={`header-container ${hasTasks ? '' : 'no-tasks-header-container'}`} >
         <h1 className={`task-list-title ${hasTasks ? '' : 'hide-title'}`}>Tasks List</h1>
-        <NavLink to="/addtask" className={`create-task-link create-task-button ${hasTasks ? '' : 'create-task-large-button'}` }>Add New Task</NavLink>
+        <NavLink to="/tasks/addtask" className={`create-task-link create-task-button ${hasTasks ? '' : 'create-task-large-button'}` }>Add New Task</NavLink>
         </div>
             {loading ? (
                 <div className="loading-container">
@@ -70,7 +69,7 @@ function GetAllTasks({
                         <NavLink 
                         id={`edit-task-${task.id}`} 
                         onClick={() => saveTaskByID(task.id)} 
-                        to={`/${task.id}`}
+                        to={`/tasks/${task.id}`}
                         aria-label="Edit Task" 
                         className="edit-task-link">
                         <FontAwesomeIcon className="edit-symbol" icon={icon({name: 'pen-to-square'})} style={{fontSize:"1.5em"}}/>

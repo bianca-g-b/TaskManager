@@ -20,10 +20,12 @@ function Navbar({user_email,handleTheme, theme}) {
   return (
     <div className="navbar">
       <div className='menu'>
-
+      <div className="symbol-name-container">
+      <FontAwesomeIcon className="logo-icon" icon={icon({name: 'hourglass'})}/>
       <div className="app-name-div">
-        <p className="app-name-link" to="/">Task Manager</p>
-        <p className="slogan">Slogan</p>
+        <NavLink className="app-name-link" to="/tasks">B. O. P. </NavLink>
+        <p className="slogan">Breezy Online Planner</p>
+      </div>
       </div>
 
 
@@ -48,7 +50,7 @@ function Navbar({user_email,handleTheme, theme}) {
           aria-label="Theme button"
           >{theme === `dark` ? "Change to light theme" : "Change to dark theme"}
       </button>
-
+        <NavLink className="about-link" to="/">About</NavLink>
         <NavLink className="logout-link" to="/login" onClick={handleLogoutClick}>Logout</NavLink>
     </div> 
 

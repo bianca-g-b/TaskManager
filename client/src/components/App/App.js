@@ -89,7 +89,7 @@ function App() {
         // Set editStatusTimer to clear editStatus after 2 seconds
         const timer = setTimeout(() => {
           setStatus("Create Task");
-          navigate(`/`)
+          navigate(`/tasks/?page=${currentPage +1}`)
         }, 1000);
         // Set editStatusTimer
         setCreateTaskTimer(timer);
@@ -141,7 +141,7 @@ async function handleEditSubmit(event) {
       // Set editStatusTimer to clear editStatus after 2 seconds
       const timer = setTimeout(() => {
           setEditStatus("Edit Task");
-          navigate(`/`)
+          navigate(`/tasks/?page=${currentPage +1}`)
       }, 1000);
       // Set editStatusTimer
       setEditStatusTimer(timer);
@@ -171,7 +171,6 @@ async function handleDelete() {
     const response = await apiFunction.deleteTask(id);
     if (response) {
       console.log("Task deleted successfully!");
-      setEditStatus("Deleted!");
       setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
       console.log(tasks);
       setIsModalOpen(false);
@@ -191,7 +190,7 @@ function handlePageChange(selectedPage) {
   setCurrentTasks(tasks.slice(firstIndex, lastIndex))
   console.log("currentTasks: ",currentTasks)
   setCurrentPage(selectedPage.selected)
-  navigate(`/?page=${selectedPage.selected +1}`)
+  navigate(`/tasks/?page=${selectedPage.selected +1}`)
   console.log("selectedPage: ",selectedPage);
 }
 
@@ -213,11 +212,11 @@ useEffect(()=>{
         isModalOpen={isModalOpen} closeModal={closeModal}
         handleDelete={handleDelete} />
     <Routes>
-    <Route path="/homepage/*" element={<AuthProvider><Homepage /></AuthProvider>} />
+    <Route path="/*" element={<AuthProvider><Homepage /></AuthProvider>} />
     <Route path="/login/*" element={<ThemeProvider><AuthProvider><Login /></AuthProvider></ThemeProvider>}>
       </Route>
 
-      <Route path={`/`} element={
+      <Route path={`/tasks`} element={
         <PrivateRoute>
           <GetAllTasks 
             tasks={tasks}
@@ -231,7 +230,7 @@ useEffect(()=>{
             currentTasks={currentTasks} />
         </PrivateRoute>}/>  
 
-      <Route path="/addtask" element={
+      <Route path="/tasks/addtask" element={
         <PrivateRoute>
           <CreateTask 
             handlesubmit={handlesubmit}
@@ -240,7 +239,7 @@ useEffect(()=>{
         </PrivateRoute>
             }/>
  
-      <Route path="/:id" element={
+      <Route path="/tasks/:id" element={
         <PrivateRoute>
           <EditTask
             tasks={tasks}

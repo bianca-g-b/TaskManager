@@ -8,7 +8,7 @@ function CreateTask({handlesubmit, status, currentPage, logout}) {
     return (
         <form onSubmit={handlesubmit} className="add-task-full-form" >
             <div className="back-to-all-tasks-container">
-            <NavLink to={`/?page=${currentPage}`} className="back-to-all-tasks-link">&#8701; Back to Tasks</NavLink>
+            <NavLink to={`/tasks/?page=${currentPage}`} className="back-to-all-tasks-link">&#8701; Back to Tasks</NavLink>
         </div>
             <h1 className="add-task-title">Add New Task</h1>
             <div className="add-task-form">

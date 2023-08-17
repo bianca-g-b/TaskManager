@@ -1,6 +1,10 @@
+import "./Homepage.css";
+
 function Homepage() {
     return (
-        <div>Homepage</div>
+        <div className="about-app-div">
+            <h1>About</h1>
+        </div>
     )
 }
 
