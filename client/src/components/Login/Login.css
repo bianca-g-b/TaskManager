@@ -172,3 +172,32 @@
         width: 85% !important;
     }
 }
+
+.about-link-div{
+    display: flex ;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1%;
+}
+
+.about-link-homepage {
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #4261FF;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 5%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: 7px;
+}
+
+.about-link-homepage:hover {
+    cursor: pointer;
+    background-color: #158723;
+}
+
+

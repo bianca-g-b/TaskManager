@@ -3,8 +3,8 @@ import supabase from "../../supabase.js";
 import { Auth } from '@supabase/auth-ui-react';
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../../context/AuthProvider.js"
-
+import { useAuthContext } from "../../context/AuthProvider.js";
+import { NavLink } from "react-router-dom";
 
 function Login() {
     const  user  = useAuthContext();
@@ -32,6 +32,9 @@ function Login() {
     return (
         <div className="login-container">
                 <Auth supabaseClient={supabase}  />
+                <div className="about-link-div">
+                <NavLink className="about-link-homepage" to="/">Go back to the about page</NavLink>
+                </div>
         </div>
     )
 }
