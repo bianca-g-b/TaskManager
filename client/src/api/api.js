@@ -14,7 +14,6 @@ export async function getTasks(user_id_value) {
             }
             else {
         const data = await response.json();
-        console.log(baseUrl);
             return data
         }}
         catch (error) {

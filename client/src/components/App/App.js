@@ -45,7 +45,6 @@ function App() {
           const response = await apiFunction.getTasks(user.id);
           setTasks(response);
           setShowTasks(true);
-          console.log("Response:", response);
     } catch (error) {
         console.error("Error:", error);
     } finally {
@@ -95,7 +94,6 @@ function App() {
         setCreateTaskTimer(timer);
 
         setTasks(updatedTasks);
-        // console.log(tasks);
       } else {
         console.error("Create task failed:", updatedTasks);
       }
@@ -188,10 +186,8 @@ const lastIndex = firstIndex + tasksPerPage;
 
 function handlePageChange(selectedPage) {  
   setCurrentTasks(tasks.slice(firstIndex, lastIndex))
-  console.log("currentTasks: ",currentTasks)
   setCurrentPage(selectedPage.selected)
   navigate(`/tasks/?page=${selectedPage.selected +1}`)
-  console.log("selectedPage: ",selectedPage);
 }
 
 // Use effect to update currentTasks and currentPage
