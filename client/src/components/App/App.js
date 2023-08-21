@@ -170,8 +170,8 @@ async function handleDelete() {
     if (response) {
       console.log("Task deleted successfully!");
       setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
-      console.log(tasks);
       setIsModalOpen(false);
+      window.location.reload();
     } else {
       console.error("Delete task failed:", response);
     }
