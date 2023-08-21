@@ -103,12 +103,12 @@
 }
 
 /*Media queries for button*/
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
     .edit-task-button {
         width: 20%;
         padding: 1.5%;
     }
-    .idit-task-full-form{
+    .edit-task-full-form{
         margin-top: 15%;
     }
 }
