@@ -1,3 +1,4 @@
+import React from "react";
 import "./Homepage.css";
 import ReactPlayer from "react-player";
 import { NavLink } from "react-router-dom";
