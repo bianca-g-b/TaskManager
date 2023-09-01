@@ -1,3 +1,4 @@
+import React from "react";
 import "./Login.css";
 import supabase from "../../supabase.js";
 import { Auth } from '@supabase/auth-ui-react';
