@@ -1,4 +1,4 @@
-# Breezy Online planner
+# Breezy Online Planner
 
 BreezyOnlinePlanner is a full-stack task management application. 
 It features a user-friendly frontend developed with React.js, a backend built with Node.js and Express, and uses Supabase for database storage and user authentication.
