@@ -4,6 +4,7 @@ import '@testing-library/jest-dom';
 // import App from './App';
 import Homepage from '../Homepage/Homepage';
 import Login from '../Login/Login';
+import CreateTask from '../CreateTask/CreateTask';
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from '../../context/Theme';
 
@@ -76,6 +77,43 @@ test("Login component", async () => {
   await waitFor(() => {
     const aboutLink = screen.getByRole("link", {name: "Go back to the about page"});
     expect(aboutLink).toBeInTheDocument();
+  });
+
+})
+
+// Testing CreateTask component
+test("CreateTask component", async () => {
+  render(
+    <ThemeProvider>
+      <MemoryRouter initialEntries={["/tasks/addtask"]}>
+        <CreateTask />
+      </MemoryRouter>
+    </ThemeProvider>
+  );
+
+  await waitFor(() => {
+    const backToAllTasksLink = screen.getByRole("link", {name: "⇽ Back to Tasks"});
+    expect(backToAllTasksLink).toBeInTheDocument();
+  });
+
+  await waitFor(() => {
+    const title = screen.getByLabelText("Title of Task");
+    expect(title).toBeInTheDocument();
+  });
+
+  await waitFor(() => {
+    const content = screen.getByLabelText("Content");
+    expect(content).toBeInTheDocument();
+  });
+
+  await waitFor(() => {
+    const deadline = screen.getByLabelText("End Date");
+    expect(deadline).toBeInTheDocument();
+  });
+
+  await waitFor(() => {
+    const addTaskButton = screen.getByRole("button");
+    expect(addTaskButton).toBeInTheDocument();
   });
 
 })
