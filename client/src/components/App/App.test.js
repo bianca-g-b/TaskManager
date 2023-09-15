@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 // import App from './App';
 import Homepage from '../Homepage/Homepage';
@@ -101,16 +101,28 @@ test("CreateTask component", async () => {
     expect(title).toBeInTheDocument();
   });
 
+  const titleInput = screen.getByRole("textbox", {name: "Title of Task"});
+  fireEvent.change(titleInput, {target: {value: "Shopping list"}});
+  expect(titleInput.value).toBe("Shopping list");
+
   await waitFor(() => {
     const content = screen.getByLabelText("Content");
     expect(content).toBeInTheDocument();
   });
+
+  const contentInput = screen.getByRole("textbox", {name: "Content"});
+  fireEvent.change(contentInput, {target: {value: "Buy tomatoes, carrots, celery and hummus"}});
+  expect(contentInput.value).toBe("Buy tomatoes, carrots, celery and hummus");
 
   await waitFor(() => {
     const deadline = screen.getByLabelText("End Date");
     expect(deadline).toBeInTheDocument();
   });
 
+  const dateInput = screen.getByTestId("deadline");
+  fireEvent.change( dateInput, {target: { value: "2023-09-15"}});
+  expect(dateInput.value).toBe("2023-09-15");
+  
   await waitFor(() => {
     const addTaskButton = screen.getByRole("button");
     expect(addTaskButton).toBeInTheDocument();
