@@ -40,6 +40,7 @@ function CreateTask({handlesubmit, status, currentPage, logout}) {
                         onChange={(event) => setNewTask({...newTask, deadline: event.target.value})}
                         type="date" 
                         id="deadline"
+                        data-testid="date-display"
                         required />
                         </div>
             <div className="add-task-button-container">

@@ -1,3 +1,4 @@
+import React from "react";
 import "./EditTask.css";
 import {useState, useEffect} from "react";
 import { NavLink } from "react-router-dom";
@@ -68,6 +69,7 @@ function EditTask({handleEditSubmit, taskById, editStatus, currentPage}) {
                         value={editedTask.deadline} 
                         onChange={(event) => setEditedTask({...editedTask, deadline: event.target.value})}
                         type="date" id="deadline"
+                        data-testid="date-display"
                     />
                     
                 </div>

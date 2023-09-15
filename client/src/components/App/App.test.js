@@ -5,8 +5,10 @@ import '@testing-library/jest-dom';
 import Homepage from '../Homepage/Homepage';
 import Login from '../Login/Login';
 import CreateTask from '../CreateTask/CreateTask';
+import EditTask from '../EditTask/EditTask';
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from '../../context/Theme';
+import {v4 as uuidv4} from "uuid";
 
 jest.mock("../../context/AuthProvider.js", () => ({
   useAuthContext: jest.fn(),
@@ -119,7 +121,7 @@ test("CreateTask component", async () => {
     expect(deadline).toBeInTheDocument();
   });
 
-  const dateInput = screen.getByTestId("deadline");
+  const dateInput = screen.getByTestId("date-display");
   fireEvent.change( dateInput, {target: { value: "2023-09-15"}});
   expect(dateInput.value).toBe("2023-09-15");
   
@@ -128,4 +130,74 @@ test("CreateTask component", async () => {
     expect(addTaskButton).toBeInTheDocument();
   });
 
+})
+
+// Testing EditTask component
+const editProps = {
+  title: "Shopping",
+  content: "Buy tomatoes, carrots, celery and hummus",
+  deadline: "2023-09-15",
+  status: true,
+  id: uuidv4()
+}
+
+test("EditTask component", async() => {
+  render(
+    <ThemeProvider>
+      <MemoryRouter initialEntries = {[`/tasks/${editProps.id}`]}>
+        <EditTask taskById={editProps} />
+      </MemoryRouter>
+    </ThemeProvider>
+  );
+
+  await waitFor(() => {
+    const backToAllTasksLink = screen.getByRole("link", {name: "⇽ Back to Tasks"});
+    expect(backToAllTasksLink).toBeInTheDocument();
+  });
+
+  await waitFor(() => {
+    const title = screen.getByLabelText("Title of Task");
+    expect(title).toBeInTheDocument();
+  });
+
+  await waitFor(() => {
+    const titleInput = screen.getByRole("textbox", {name: "Title of Task"});
+    expect(titleInput.value).toBe(editProps.title)
+  })
+
+  await waitFor(() => {
+    const content = screen.getByLabelText("Content");
+    expect(content).toBeInTheDocument();
+  });
+
+  await waitFor(() => {
+    const contentInput = screen.getByRole("textbox", {name: "Content"});
+    expect(contentInput.value).toBe(editProps.content);
+  });
+
+  await waitFor(() => {
+    const deadline = screen.getByLabelText("End Date");
+    expect(deadline).toBeInTheDocument();
+  });
+
+  await waitFor(() => {
+    const dateInput = screen.getByTestId("date-display");
+    expect(dateInput.value).toBe(editProps.deadline);
+  });
+
+  await waitFor(() => {
+    const markAsDone = screen.getByLabelText("Mark as done");
+    expect(markAsDone).toBeInTheDocument();
+  });
+
+  await waitFor(() => {
+    const statusCheckbox = screen.getByRole("checkbox", {name: "Mark as done"});
+    expect(statusCheckbox.value).toBe((editProps.status).toString());
+  });
+
+  await waitFor(() => {
+    const addTaskButton = screen.getByRole("button");
+    expect(addTaskButton).toBeInTheDocument();
+  });
+  
 })
