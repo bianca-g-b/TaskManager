@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@adobe/css-tools": "^4.3.3",
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -15,9 +16,13 @@
     "@testing-library/user-event": "^13.5.0",
     "babel-plugin-macros": "^3.1.0",
     "dotenv": "^16.3.1",
+    "es5-ext": "^0.10.64",
+    "follow-redirects": "^1.15.6",
     "identity-obj-proxy": "^3.0.0",
     "jest-environment-jsdom": "^29.6.4",
     "moment": "^2.29.4",
+    "nth-check": "^2.1.1",
+    "postcss": "^8.4.38",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-paginate": "^8.2.0",
@@ -25,7 +30,8 @@
     "react-router-dom": "^6.14.2",
     "react-scripts": "^5.0.1",
     "uuid": "^9.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "webpack-dev-middleware": "^7.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
